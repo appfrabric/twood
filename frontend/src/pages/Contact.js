@@ -12,12 +12,15 @@ import {
   Snackbar,
   Alert,
   useTheme,
+  Paper,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { IMAGES } from '../constants/images';
 
 const MotionBox = motion(Box);
 
@@ -69,24 +72,28 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: <LocationOnIcon sx={{ fontSize: 40 }} />,
-      title: 'Address',
-      content: 'Industrial Zone, Douala, Cameroon',
+      icon: <EmailIcon sx={{ fontSize: 40 }} />,
+      title: 'Email',
+      content: 'info@tropicalwood.com',
+      link: 'mailto:info@tropicalwood.com',
     },
     {
       icon: <PhoneIcon sx={{ fontSize: 40 }} />,
       title: 'Phone',
-      content: '+237 XXX XXX XXX',
+      content: '+237 123 456 789',
+      link: 'tel:+237123456789',
     },
     {
-      icon: <EmailIcon sx={{ fontSize: 40 }} />,
-      title: 'Email',
-      content: 'info@tropicalwood.com',
+      icon: <WhatsAppIcon sx={{ fontSize: 40 }} />,
+      title: 'WhatsApp',
+      content: '+237 123 456 789',
+      link: 'https://wa.me/237123456789',
     },
     {
-      icon: <AccessTimeIcon sx={{ fontSize: 40 }} />,
-      title: 'Business Hours',
-      content: 'Monday - Friday: 8:00 AM - 5:00 PM',
+      icon: <LocationOnIcon sx={{ fontSize: 40 }} />,
+      title: 'Address',
+      content: 'Douala, Cameroon',
+      link: 'https://maps.google.com/?q=Douala,Cameroon',
     },
   ];
 
@@ -99,7 +106,7 @@ const Contact = () => {
           height: '40vh',
           display: 'flex',
           alignItems: 'center',
-          backgroundImage: 'url(/images/contact-hero.jpg)',
+          backgroundImage: `url(${IMAGES.contact.hero})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           '&::before': {
@@ -135,133 +142,139 @@ const Contact = () => {
 
       {/* Contact Information */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Grid container spacing={4}>
-          {contactInfo.map((info, index) => (
-            <Grid item xs={12} sm={6} md={3} key={info.title}>
-              <MotionBox
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    p: 3,
-                  }}
-                >
-                  <Box sx={{ color: 'primary.main', mb: 2 }}>
-                    {info.icon}
-                  </Box>
-                  <Typography variant="h6" gutterBottom>
-                    {info.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {info.content}
-                  </Typography>
-                </Card>
-              </MotionBox>
-            </Grid>
-          ))}
+        <Grid container spacing={6}>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h3" gutterBottom color="primary.main">
+              Get in Touch
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Have questions about our products or services? We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
+            </Typography>
+            <Box
+              component="img"
+              src={IMAGES.contact.office}
+              alt="Contact Us"
+              sx={{
+                width: '100%',
+                borderRadius: 2,
+                boxShadow: 3,
+                mt: 4,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Paper elevation={3} sx={{ p: 4 }}>
+              <form onSubmit={handleSubmit}>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label={t('contact.form.name')}
+                      variant="outlined"
+                      required
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label={t('contact.form.email')}
+                      variant="outlined"
+                      type="email"
+                      required
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label={t('contact.form.phone')}
+                      variant="outlined"
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label={t('contact.form.message')}
+                      variant="outlined"
+                      multiline
+                      rows={4}
+                      required
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      size="large"
+                      fullWidth
+                    >
+                      {t('contact.form.submit')}
+                    </Button>
+                  </Grid>
+                </Grid>
+              </form>
+            </Paper>
+          </Grid>
         </Grid>
       </Container>
 
-      {/* Contact Form */}
+      {/* Contact Methods */}
       <Box sx={{ bgcolor: 'background.paper', py: 8 }}>
         <Container maxWidth="lg">
-          <Grid container spacing={6}>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h3" gutterBottom color="primary.main">
-                Get in Touch
-              </Typography>
-              <Typography variant="body1" paragraph>
-                Have questions about our products or services? We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
-              </Typography>
-              <Box
-                component="img"
-                src="/images/contact-image.jpg"
-                alt="Contact Us"
-                sx={{
-                  width: '100%',
-                  borderRadius: 2,
-                  boxShadow: 3,
-                  mt: 4,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Card sx={{ p: 4 }}>
-                <form onSubmit={handleSubmit}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        fullWidth
-                        label="Name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        fullWidth
-                        label="Email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        fullWidth
-                        label="Subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        required
-                        fullWidth
-                        label="Message"
-                        name="message"
-                        multiline
-                        rows={4}
-                        value={formData.message}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        size="large"
-                        fullWidth
-                      >
-                        Send Message
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </form>
-              </Card>
-            </Grid>
+          <Grid container spacing={4}>
+            {contactInfo.map((info, index) => (
+              <Grid item xs={12} sm={6} md={3} key={info.title}>
+                <MotionBox
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Paper
+                    elevation={2}
+                    sx={{
+                      p: 3,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      transition: 'transform 0.2s',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                      },
+                    }}
+                  >
+                    <Box sx={{ color: 'primary.main', mb: 2 }}>
+                      {info.icon}
+                    </Box>
+                    <Typography variant="h6" gutterBottom>
+                      {info.title}
+                    </Typography>
+                    <Button
+                      component="a"
+                      href={info.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{ mt: 1 }}
+                    >
+                      {info.content}
+                    </Button>
+                  </Paper>
+                </MotionBox>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>

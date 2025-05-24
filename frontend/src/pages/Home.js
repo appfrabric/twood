@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
+import { IMAGES } from '../constants/images';
 
 const MotionBox = motion(Box);
 
@@ -23,19 +24,19 @@ const Home = () => {
   const featuredProducts = [
     {
       title: t('products.plywood.premium'),
-      image: '/images/premium-plywood.jpg',
+      image: IMAGES.products.plywood.premium,
       description: 'High-quality premium plywood for demanding applications',
       path: '/products/plywood/premium',
     },
     {
       title: t('products.melamine'),
-      image: '/images/melamine.jpg',
+      image: IMAGES.products.melamine.main,
       description: 'Custom-colored prefinished melamine plywood',
       path: '/products/melamine',
     },
     {
       title: t('products.veneer'),
-      image: '/images/veneer.jpg',
+      image: IMAGES.products.veneer.main,
       description: 'Premium wood veneer from Cameroon\'s finest woods',
       path: '/products/veneer',
     },
@@ -50,7 +51,7 @@ const Home = () => {
           height: '80vh',
           display: 'flex',
           alignItems: 'center',
-          backgroundImage: 'url(/images/hero-bg.jpg)',
+          backgroundImage: `url(${IMAGES.home.hero})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           '&::before': {
@@ -84,9 +85,16 @@ const Home = () => {
             <Typography
               variant="h4"
               color="white"
-              sx={{ mb: 4, maxWidth: '800px' }}
+              sx={{ mb: 2, maxWidth: '800px' }}
             >
               Premium Wood Products from Cameroon
+            </Typography>
+            <Typography
+              variant="h5"
+              color="white"
+              sx={{ mb: 4, maxWidth: '800px', opacity: 0.9 }}
+            >
+              A Division of Roi Lux
             </Typography>
             <Button
               component={RouterLink}
@@ -189,7 +197,7 @@ const Home = () => {
             <Grid item xs={12} md={6}>
               <Box
                 component="img"
-                src="/images/factory-preview.jpg"
+                src={IMAGES.about.factoryExterior}
                 alt="Factory Preview"
                 sx={{
                   width: '100%',

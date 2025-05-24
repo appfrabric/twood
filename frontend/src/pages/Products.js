@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
+import { IMAGES } from '../constants/images';
 
 const MotionBox = motion(Box);
 
@@ -27,24 +28,24 @@ const Products = () => {
     {
       id: 'plywood',
       title: t('products.plywood'),
-      image: '/images/plywood-category.jpg',
+      image: 'images/products/plywood/main.jpg',
       description: 'High-quality plywood products for various applications',
       products: [
         {
           title: t('products.plywood.premium'),
-          image: '/images/premium-plywood.jpg',
+          image: 'images/products/plywood/premium.jpg',
           description: 'Premium grade plywood for demanding applications',
           path: '/products/plywood/premium',
         },
         {
           title: t('products.plywood.marine'),
-          image: '/images/marine-plywood.jpg',
+          image: 'images/products/plywood/marine.jpg',
           description: 'Marine-grade plywood for water-resistant applications',
           path: '/products/plywood/marine',
         },
         {
           title: t('products.plywood.structural'),
-          image: '/images/structural-plywood.jpg',
+          image: 'images/products/plywood/structural.jpg',
           description: 'Structural plywood for construction applications',
           path: '/products/plywood/structural',
         },
@@ -52,19 +53,19 @@ const Products = () => {
     },
     {
       id: 'melamine',
-      title: t('products.melamine'),
-      image: '/images/melamine-category.jpg',
+      title: 'Prefinished Melamine Wood Plank',
+      image: 'images/products/melamine/main.jpg',
       description: 'Custom-colored prefinished melamine plywood',
       products: [
         {
           title: 'Standard Colors',
-          image: '/images/melamine-standard.jpg',
+          image: 'images/products/melamine/standard.jpg',
           description: 'Wide range of standard color options',
           path: '/products/melamine/standard',
         },
         {
           title: 'Custom Colors',
-          image: '/images/melamine-custom.jpg',
+          image: 'images/products/melamine/custom.jpg',
           description: 'Custom color matching services',
           path: '/products/melamine/custom',
         },
@@ -73,30 +74,30 @@ const Products = () => {
     {
       id: 'veneer',
       title: t('products.veneer'),
-      image: '/images/veneer-category.jpg',
+      image: 'images/products/veneer/main.jpg',
       description: 'Premium wood veneer from Cameroon\'s finest woods',
       products: [
         {
           title: t('wood.okoume'),
-          image: '/images/okoume-veneer.jpg',
+          image: 'images/products/veneer/okoume.jpg',
           description: 'Premium Okoume wood veneer',
           path: '/products/veneer/okoume',
         },
         {
           title: t('wood.mahogany'),
-          image: '/images/mahogany-veneer.jpg',
+          image: 'images/products/veneer/mahogany.jpg',
           description: 'Rich Mahogany wood veneer',
           path: '/products/veneer/mahogany',
         },
         {
           title: t('wood.ayous'),
-          image: '/images/ayous-veneer.jpg',
+          image: 'images/products/veneer/ayous.jpg',
           description: 'Light Ayous wood veneer',
           path: '/products/veneer/ayous',
         },
         {
           title: t('wood.sapele'),
-          image: '/images/sapele-veneer.jpg',
+          image: 'images/products/veneer/sapele.jpg',
           description: 'Elegant Sapele wood veneer',
           path: '/products/veneer/sapele',
         },
@@ -117,7 +118,7 @@ const Products = () => {
           height: '40vh',
           display: 'flex',
           alignItems: 'center',
-          backgroundImage: 'url(/images/products-hero.jpg)',
+          backgroundImage: `url(images/products/hero.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           '&::before': {
@@ -254,7 +255,7 @@ const Products = () => {
             <Grid item xs={12} md={6}>
               <Box
                 component="img"
-                src="/images/custom-order.jpg"
+                src="images/products/custom-order.jpg"
                 alt="Custom Order"
                 sx={{
                   width: '100%',

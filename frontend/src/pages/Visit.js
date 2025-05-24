@@ -17,6 +17,7 @@ import { motion } from 'framer-motion';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { IMAGES } from '../constants/images';
 
 const MotionBox = motion(Box);
 
@@ -28,32 +29,32 @@ const Visit = () => {
 
   const galleryImages = [
     {
-      src: '/images/factory-1.jpg',
+      src: IMAGES.about.gallery[0],
       alt: 'Factory Exterior',
       description: 'Our state-of-the-art facility in Douala',
     },
     {
-      src: '/images/factory-2.jpg',
+      src: IMAGES.about.gallery[1],
       alt: 'Production Line',
       description: 'Modern production line for plywood manufacturing',
     },
     {
-      src: '/images/factory-3.jpg',
+      src: IMAGES.about.gallery[2],
       alt: 'Quality Control',
       description: 'Rigorous quality control process',
     },
     {
-      src: '/images/factory-4.jpg',
+      src: IMAGES.about.factoryExterior,
       alt: 'Warehouse',
       description: 'Spacious warehouse for product storage',
     },
     {
-      src: '/images/factory-5.jpg',
+      src: IMAGES.about.team,
       alt: 'Showroom',
       description: 'Product showroom for clients',
     },
     {
-      src: '/images/factory-6.jpg',
+      src: IMAGES.about.values,
       alt: 'Loading Area',
       description: 'Efficient loading and shipping area',
     },
@@ -89,7 +90,7 @@ const Visit = () => {
           height: '40vh',
           display: 'flex',
           alignItems: 'center',
-          backgroundImage: 'url(/images/visit-hero.jpg)',
+          backgroundImage: `url(${IMAGES.about.hero})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           '&::before': {
@@ -156,7 +157,7 @@ const Visit = () => {
           <Grid item xs={12} md={6}>
             <Box
               component="img"
-              src="/images/factory-tour.jpg"
+              src={IMAGES.about.factoryExterior}
               alt="Factory Tour"
               sx={{
                 width: '100%',

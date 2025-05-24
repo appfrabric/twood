@@ -6,10 +6,10 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies with legacy peer deps
-RUN npm install --legacy-peer-deps
+# Install dependencies
+RUN npm install
 
-# Copy source code
+# Copy all files
 COPY . .
 
 # Build the app
@@ -23,6 +23,9 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy images directory
+COPY public/images /usr/share/nginx/html/images
 
 # Expose port
 EXPOSE 80

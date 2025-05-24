@@ -12,6 +12,7 @@ import FactoryIcon from '@mui/icons-material/Factory';
 import NatureIcon from '@mui/icons-material/Nature';
 import SecurityIcon from '@mui/icons-material/Security';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import { IMAGES } from '../constants/images';
 
 const MotionBox = motion(Box);
 
@@ -50,7 +51,7 @@ const About = () => {
           height: '50vh',
           display: 'flex',
           alignItems: 'center',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)',
+          backgroundImage: `url(${IMAGES.about.hero})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           '&::before': {
@@ -113,7 +114,7 @@ const About = () => {
           <Grid item xs={12} md={6}>
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              src={IMAGES.about.factoryExterior}
               alt="Factory Exterior"
               sx={{
                 width: '100%',
