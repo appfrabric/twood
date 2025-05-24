@@ -31,8 +31,8 @@ A modern web application for Tropical Wood Inc., a division of Roi Lux, showcasi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/tropical-wood.git
-cd tropical-wood
+git clone https://github.com/appfrabric/twood.git
+cd twood
 ```
 
 2. Create environment files:
@@ -74,7 +74,7 @@ uvicorn main:app --reload
 ## Project Structure
 
 ```
-tropical-wood/
+twood/
 ├── frontend/               # React frontend application
 │   ├── public/            # Static files
 │   ├── src/              # Source code
@@ -118,4 +118,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Tropical Wood Inc. - [contact@tropicalwood.com](mailto:contact@tropicalwood.com)
 
-Project Link: [https://github.com/your-username/tropical-wood](https://github.com/your-username/tropical-wood) 
+Project Link: [https://github.com/appfrabric/twood](https://github.com/appfrabric/twood) 
