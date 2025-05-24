@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "visit": "Visit Us",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Premium Wood Products",
+      "subtitle": "Manufacturing Excellence in Cameroon"
+    },
+    "products": {
+      "title": "Our Products",
+      "subtitle": "Discover our range of high-quality wood products"
+    },
+    "about": {
+      "title": "About Tropical Wood",
+      "subtitle": "A division of Roi Lux, leading the industry since 2010"
+    }
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Discover our range of high-quality wood products",
+    "categories": {
+      "plywood": "Plywood",
+      "melamine": "Melamine",
+      "veneer": "Veneer"
+    }
+  },
+  "visit": {
+    "title": "Visit Our Factory",
+    "subtitle": "Experience our manufacturing excellence firsthand",
+    "address": "Our Location",
+    "contact": "Contact Information",
+    "hours": "Visiting Hours"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  }
+} 

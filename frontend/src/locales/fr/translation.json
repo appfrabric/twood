@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "products": "Produits",
+    "visit": "Visitez-nous",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Produits en Bois de Qualité",
+      "subtitle": "Excellence Manufacturière au Cameroun"
+    },
+    "products": {
+      "title": "Nos Produits",
+      "subtitle": "Découvrez notre gamme de produits en bois de haute qualité"
+    },
+    "about": {
+      "title": "À Propos de Tropical Wood",
+      "subtitle": "Une division de Roi Lux, leader de l'industrie depuis 2010"
+    }
+  },
+  "products": {
+    "title": "Nos Produits",
+    "subtitle": "Découvrez notre gamme de produits en bois de haute qualité",
+    "categories": {
+      "plywood": "Contreplaqué",
+      "melamine": "Mélamine",
+      "veneer": "Placage"
+    }
+  },
+  "visit": {
+    "title": "Visitez Notre Usine",
+    "subtitle": "Découvrez notre excellence manufacturière",
+    "address": "Notre Adresse",
+    "contact": "Informations de Contact",
+    "hours": "Heures de Visite"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Entrez en contact avec notre équipe",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "message": "Message",
+      "submit": "Envoyer le Message"
+    }
+  }
+} 
