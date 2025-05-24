@@ -32,21 +32,21 @@ const Products = () => {
       description: 'High-quality plywood products for various applications',
       products: [
         {
-          title: t('products.plywood.premium'),
+          title: `${t('products.plywood.premium')} - ${t('wood.okoume')}`,
           image: 'images/products/plywood/premium.jpg',
-          description: 'Premium grade plywood for demanding applications',
+          description: 'Premium grade plywood made from Okoume wood for demanding applications',
           path: '/products/plywood/premium',
         },
         {
-          title: t('products.plywood.marine'),
+          title: `${t('products.plywood.marine')} - ${t('wood.mahogany')}`,
           image: 'images/products/plywood/marine.jpg',
-          description: 'Marine-grade plywood for water-resistant applications',
+          description: 'Marine-grade plywood made from Mahogany for water-resistant applications',
           path: '/products/plywood/marine',
         },
         {
-          title: t('products.plywood.structural'),
+          title: `${t('products.plywood.structural')} - ${t('wood.ayous')}`,
           image: 'images/products/plywood/structural.jpg',
-          description: 'Structural plywood for construction applications',
+          description: 'Structural plywood made from Ayous for construction applications',
           path: '/products/plywood/structural',
         },
       ],
@@ -115,7 +115,7 @@ const Products = () => {
       <Box
         sx={{
           position: 'relative',
-          height: '40vh',
+          height: '30vh',
           display: 'flex',
           alignItems: 'center',
           backgroundImage: `url(images/products/hero.jpg)`,
@@ -154,27 +154,74 @@ const Products = () => {
 
       {/* Product Categories */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Tabs
-          value={selectedTab}
-          onChange={handleTabChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{ mb: 4 }}
+        <Box
+          sx={{
+            border: '2px solid #8B4513',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            mb: 4,
+          }}
         >
-          {productCategories.map((category) => (
-            <Tab
-              key={category.id}
-              label={category.title}
-              sx={{ fontSize: '1.1rem' }}
-            />
-          ))}
-        </Tabs>
+          <Tabs
+            value={selectedTab}
+            onChange={handleTabChange}
+            variant="scrollable"
+            scrollButtons="auto"
+            sx={{
+              backgroundColor: 'rgba(74, 103, 65, 0.05)',
+              '& .MuiTabs-indicator': {
+                backgroundColor: '#8B4513',
+                height: '3px',
+              },
+              '& .MuiTab-root': {
+                color: '#8B4513',
+                fontWeight: 600,
+                fontSize: '1.1rem',
+                textTransform: 'none',
+                minWidth: 200,
+                '&.Mui-selected': {
+                  color: '#5C2E0C',
+                  fontWeight: 700,
+                  backgroundColor: 'rgba(74, 103, 65, 0.15)',
+                },
+              },
+            }}
+          >
+            {productCategories.map((category) => (
+              <Tab
+                key={category.id}
+                label={category.title}
+                sx={{ fontSize: '1.1rem' }}
+              />
+            ))}
+          </Tabs>
+        </Box>
 
         {productCategories.map((category, categoryIndex) => (
           <Box
             key={category.id}
-            sx={{ display: selectedTab === categoryIndex ? 'block' : 'none' }}
+            sx={{
+              display: selectedTab === categoryIndex ? 'block' : 'none',
+              backgroundColor: selectedTab === categoryIndex ? 'rgba(74, 103, 65, 0.05)' : 'transparent',
+              borderRadius: '8px',
+              p: 3,
+              boxShadow: selectedTab === categoryIndex ? '0px 4px 12px rgba(74, 103, 65, 0.1)' : 'none',
+            }}
           >
+            <Typography
+              variant="h4"
+              color="primary.main"
+              sx={{ mb: 4, fontWeight: 600 }}
+            >
+              {category.title}
+            </Typography>
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ mb: 4, maxWidth: '800px' }}
+            >
+              {category.description}
+            </Typography>
             <Grid container spacing={4}>
               {category.products.map((product, index) => (
                 <Grid item xs={12} sm={6} md={4} key={product.title}>
@@ -189,8 +236,11 @@ const Products = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         transition: 'transform 0.2s',
+                        backgroundColor: 'white',
+                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
                         '&:hover': {
                           transform: 'translateY(-8px)',
+                          boxShadow: '0px 8px 16px rgba(74, 103, 65, 0.15)',
                         },
                       }}
                     >
@@ -201,7 +251,7 @@ const Products = () => {
                         alt={product.title}
                       />
                       <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" component="h2" color="secondary.main">
                           {product.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
@@ -214,6 +264,14 @@ const Products = () => {
                           to={product.path}
                           variant="outlined"
                           fullWidth
+                          sx={{
+                            borderColor: '#8B4513',
+                            color: '#8B4513',
+                            '&:hover': {
+                              borderColor: '#5C2E0C',
+                              backgroundColor: 'rgba(74, 103, 65, 0.1)',
+                            },
+                          }}
                         >
                           {t('common.viewDetails')}
                         </Button>
