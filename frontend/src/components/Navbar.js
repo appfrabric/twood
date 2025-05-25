@@ -130,7 +130,6 @@ const Navbar = () => {
                   fontWeight: 700,
                   px: 3,
                   py: 1.5,
-                  borderRight: '2px solid #8B4513',
                   fontSize: '1.2rem',
                 }}
               >
@@ -143,15 +142,17 @@ const Navbar = () => {
                     component={RouterLink}
                     to={item.path}
                     sx={{
-                      color: '#8B4513',
+                      color: location.pathname === item.path ? '#5C2E0C' : '#8B4513',
                       px: 3,
                       py: 1.5,
                       fontSize: '1rem',
                       fontWeight: location.pathname === item.path ? 700 : 500,
                       textTransform: 'none',
                       borderRadius: 0,
+                      backgroundColor: location.pathname === item.path ? 'rgba(74, 103, 65, 0.15)' : 'transparent',
                       '&:hover': {
                         backgroundColor: 'rgba(74, 103, 65, 0.2)',
+                        color: '#5C2E0C',
                       },
                     }}
                   >
