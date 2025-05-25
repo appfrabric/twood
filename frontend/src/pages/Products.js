@@ -25,6 +25,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
   transition: 'transform 0.3s ease-in-out',
   '&:hover': {
     transform: 'translateY(-8px)',
@@ -321,11 +322,12 @@ const Products = () => {
             </Typography>
             <Grid container spacing={4}>
               {category.products.map((product, index) => (
-                <Grid item xs={12} sm={6} md={4} key={product.title}>
+                <Grid item xs={12} sm={6} md={4} key={product.title} sx={{ display: 'flex', height: '500px' }}>
                   <MotionBox
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
+                    sx={{ width: '100%' }}
                   >
                     <StyledCard>
                       <CardMedia
@@ -335,7 +337,12 @@ const Products = () => {
                         alt={product.title}
                         sx={{ objectFit: 'cover' }}
                       />
-                      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                      <CardContent sx={{ 
+                        flexGrow: 1, 
+                        display: 'flex', 
+                        flexDirection: 'column',
+                        pb: '80px !important'
+                      }}>
                         <Typography 
                           gutterBottom 
                           variant="h5" 
@@ -367,7 +374,14 @@ const Products = () => {
                           {product.description}
                         </Typography>
                       </CardContent>
-                      <Box sx={{ p: 3, pt: 0 }}>
+                      <Box sx={{ 
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        p: 3,
+                        backgroundColor: 'white'
+                      }}>
                         <Button
                           onClick={() => handleGalleryOpen(product)}
                           variant="outlined"
