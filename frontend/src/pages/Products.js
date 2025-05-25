@@ -16,6 +16,7 @@ import {
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import { IMAGES } from '../constants/images';
+import ProductGallery from '../components/ProductGallery';
 
 const MotionBox = motion(Box);
 
@@ -23,11 +24,23 @@ const Products = () => {
   const { t } = useTranslation();
   const theme = useTheme();
   const [selectedTab, setSelectedTab] = useState(0);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleGalleryOpen = (product) => {
+    setSelectedProduct(product);
+    setGalleryOpen(true);
+  };
+
+  const handleGalleryClose = () => {
+    setGalleryOpen(false);
+    setSelectedProduct(null);
+  };
 
   const productCategories = [
     {
       id: 'plywood',
-      title: t('products.plywood'),
+      title: t('products.plywood.title'),
       image: 'images/products/plywood/main.jpg',
       description: 'High-quality plywood products for various applications',
       products: [
@@ -36,84 +49,144 @@ const Products = () => {
           image: 'images/products/plywood/premium.jpg',
           description: 'Premium grade plywood made from Okoume wood for demanding applications',
           path: '/products/plywood/premium',
+          gallery: [
+            'images/products/plywood/premium/gallery/1.jpg',
+            'images/products/plywood/premium/gallery/2.jpg',
+            'images/products/plywood/premium/gallery/3.jpg',
+            'images/products/plywood/premium/gallery/4.jpg',
+          ],
         },
         {
           title: `${t('products.plywood.marine')} - ${t('wood.mahogany')}`,
           image: 'images/products/plywood/marine.jpg',
           description: 'Marine-grade plywood made from Mahogany for water-resistant applications',
           path: '/products/plywood/marine',
+          gallery: [
+            'images/products/plywood/marine/gallery/1.jpg',
+            'images/products/plywood/marine/gallery/2.jpg',
+            'images/products/plywood/marine/gallery/3.jpg',
+            'images/products/plywood/marine/gallery/4.jpg',
+          ],
         },
         {
           title: `${t('products.plywood.structural')} - ${t('wood.ayous')}`,
           image: 'images/products/plywood/structural.jpg',
           description: 'Structural plywood made from Ayous for construction applications',
           path: '/products/plywood/structural',
+          gallery: [
+            'images/products/plywood/structural/gallery/1.jpg',
+            'images/products/plywood/structural/gallery/2.jpg',
+            'images/products/plywood/structural/gallery/3.jpg',
+            'images/products/plywood/structural/gallery/4.jpg',
+          ],
         },
       ],
     },
     {
       id: 'melamine',
-      title: 'Prefinished Melamine Wood Plank',
+      title: t('products.melamine.title'),
       image: 'images/products/melamine/main.jpg',
       description: 'Custom-colored prefinished melamine plywood',
       products: [
         {
-          title: 'Standard Colors',
+          title: t('products.melamine.standard'),
           image: 'images/products/melamine/standard.jpg',
           description: 'Wide range of standard color options',
           path: '/products/melamine/standard',
+          gallery: [
+            'images/products/melamine/standard/gallery/1.jpg',
+            'images/products/melamine/standard/gallery/2.jpg',
+            'images/products/melamine/standard/gallery/3.jpg',
+            'images/products/melamine/standard/gallery/4.jpg',
+          ],
         },
         {
-          title: 'Custom Colors',
+          title: t('products.melamine.custom'),
           image: 'images/products/melamine/custom.jpg',
           description: 'Custom color matching services',
           path: '/products/melamine/custom',
+          gallery: [
+            'images/products/melamine/custom/gallery/1.jpg',
+            'images/products/melamine/custom/gallery/2.jpg',
+            'images/products/melamine/custom/gallery/3.jpg',
+            'images/products/melamine/custom/gallery/4.jpg',
+          ],
         },
       ],
     },
     {
       id: 'veneer',
-      title: t('products.veneer'),
+      title: t('products.veneer.title'),
       image: 'images/products/veneer/main.jpg',
       description: 'Premium wood veneer from Cameroon\'s finest woods',
       products: [
         {
-          title: t('wood.okoume'),
+          title: t('products.veneer.okoume'),
           image: 'images/products/veneer/okoume.jpg',
           description: 'Premium Okoume wood veneer',
           path: '/products/veneer/okoume',
+          gallery: [
+            'images/products/veneer/okoume/gallery/1.jpg',
+            'images/products/veneer/okoume/gallery/2.jpg',
+            'images/products/veneer/okoume/gallery/3.jpg',
+            'images/products/veneer/okoume/gallery/4.jpg',
+          ],
         },
         {
-          title: t('wood.mahogany'),
+          title: t('products.veneer.mahogany'),
           image: 'images/products/veneer/mahogany.jpg',
           description: 'Rich Mahogany wood veneer',
           path: '/products/veneer/mahogany',
+          gallery: [
+            'images/products/veneer/mahogany/gallery/1.jpg',
+            'images/products/veneer/mahogany/gallery/2.jpg',
+            'images/products/veneer/mahogany/gallery/3.jpg',
+            'images/products/veneer/mahogany/gallery/4.jpg',
+          ],
         },
         {
-          title: t('wood.ayous'),
+          title: t('products.veneer.ayous'),
           image: 'images/products/veneer/ayous.jpg',
           description: 'Light Ayous wood veneer',
           path: '/products/veneer/ayous',
+          gallery: [
+            'images/products/veneer/ayous/gallery/1.jpg',
+            'images/products/veneer/ayous/gallery/2.jpg',
+            'images/products/veneer/ayous/gallery/3.jpg',
+            'images/products/veneer/ayous/gallery/4.jpg',
+          ],
         },
         {
-          title: t('wood.sapele'),
+          title: t('products.veneer.sapele'),
           image: 'images/products/veneer/sapele.jpg',
           description: 'Elegant Sapele wood veneer',
           path: '/products/veneer/sapele',
+          gallery: [
+            'images/products/veneer/sapele/gallery/1.jpg',
+            'images/products/veneer/sapele/gallery/2.jpg',
+            'images/products/veneer/sapele/gallery/3.jpg',
+            'images/products/veneer/sapele/gallery/4.jpg',
+          ],
         },
       ],
     },
     {
       id: 'logs',
-      title: t('products.logs'),
+      title: t('products.logs.title'),
       image: 'images/products/logs/main.jpg',
       description: 'Premium wood logs from Cameroon\'s finest forests',
       products: [
         {
-          title: 'Raw Wood Logs',
+          title: t('products.logs.raw'),
           image: 'images/products/logs/main.jpg',
           description: 'High-quality raw wood logs including Okoume, Mahogany, Ayous, and Sapele. Perfect for various applications including furniture making, construction, and plywood production.',
           path: '/products/logs',
+          gallery: [
+            'images/products/logs/gallery/1.jpg',
+            'images/products/logs/gallery/2.jpg',
+            'images/products/logs/gallery/3.jpg',
+            'images/products/logs/gallery/4.jpg',
+          ],
         }
       ],
     },
@@ -302,8 +375,7 @@ const Products = () => {
                       </CardContent>
                       <Box sx={{ p: 3, pt: 0 }}>
                         <Button
-                          component={RouterLink}
-                          to={product.path}
+                          onClick={() => handleGalleryOpen(product)}
                           variant="outlined"
                           fullWidth
                           sx={{
@@ -320,7 +392,7 @@ const Products = () => {
                             },
                           }}
                         >
-                          {t('common.viewDetails')}
+                          {t('viewGallery')}
                         </Button>
                       </Box>
                     </Card>
@@ -372,6 +444,14 @@ const Products = () => {
           </Grid>
         </Container>
       </Box>
+
+      {/* Gallery Modal */}
+      <ProductGallery
+        open={galleryOpen}
+        onClose={handleGalleryClose}
+        title={selectedProduct?.title}
+        images={selectedProduct?.gallery || []}
+      />
     </Box>
   );
 };

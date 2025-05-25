@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Box,
@@ -14,12 +14,25 @@ import {
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import { IMAGES } from '../constants/images';
+import ProductGallery from '../components/ProductGallery';
 
 const MotionBox = motion(Box);
 
 const Home = () => {
   const { t } = useTranslation();
   const theme = useTheme();
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleGalleryOpen = (product) => {
+    setSelectedProduct(product);
+    setGalleryOpen(true);
+  };
+
+  const handleGalleryClose = () => {
+    setGalleryOpen(false);
+    setSelectedProduct(null);
+  };
 
   const featuredProducts = [
     {
@@ -27,18 +40,36 @@ const Home = () => {
       image: IMAGES.products.plywood.premium,
       description: 'High-quality premium plywood for demanding applications',
       path: '/products/plywood/premium',
+      gallery: [
+        'images/products/plywood/premium/gallery/1.jpg',
+        'images/products/plywood/premium/gallery/2.jpg',
+        'images/products/plywood/premium/gallery/3.jpg',
+        'images/products/plywood/premium/gallery/4.jpg',
+      ],
     },
     {
-      title: t('products.melamine'),
+      title: t('products.melamine.title'),
       image: IMAGES.products.melamine.main,
       description: 'Custom-colored prefinished melamine plywood',
       path: '/products/melamine',
+      gallery: [
+        'images/products/melamine/standard/gallery/1.jpg',
+        'images/products/melamine/standard/gallery/2.jpg',
+        'images/products/melamine/standard/gallery/3.jpg',
+        'images/products/melamine/standard/gallery/4.jpg',
+      ],
     },
     {
-      title: t('products.veneer'),
+      title: t('products.veneer.title'),
       image: IMAGES.products.veneer.main,
       description: 'Premium wood veneer from Cameroon\'s finest woods',
       path: '/products/veneer',
+      gallery: [
+        'images/products/veneer/okoume/gallery/1.jpg',
+        'images/products/veneer/okoume/gallery/2.jpg',
+        'images/products/veneer/okoume/gallery/3.jpg',
+        'images/products/veneer/okoume/gallery/4.jpg',
+      ],
     },
   ];
 
@@ -48,7 +79,7 @@ const Home = () => {
       <Box
         sx={{
           position: 'relative',
-          height: '30vh',
+          height: '40vh',
           display: 'flex',
           alignItems: 'center',
           backgroundImage: `url(${IMAGES.home.hero})`,
@@ -102,8 +133,12 @@ const Home = () => {
               variant="contained"
               size="large"
               sx={{
-                bgcolor: 'primary.main',
-                '&:hover': { bgcolor: 'primary.dark' },
+                bgcolor: 'white',
+                color: '#8B4513',
+                '&:hover': { 
+                  bgcolor: 'rgba(255, 255, 255, 0.9)',
+                  color: '#5C2E0C'
+                },
               }}
             >
               {t('common.learnMore')}
@@ -187,8 +222,7 @@ const Home = () => {
                   </CardContent>
                   <Box sx={{ p: 3, pt: 0 }}>
                     <Button
-                      component={RouterLink}
-                      to={product.path}
+                      onClick={() => handleGalleryOpen(product)}
                       variant="outlined"
                       fullWidth
                       sx={{
@@ -205,7 +239,7 @@ const Home = () => {
                         },
                       }}
                     >
-                      {t('common.viewDetails')}
+                      {t('viewGallery')}
                     </Button>
                   </Box>
                 </Card>
@@ -233,8 +267,11 @@ const Home = () => {
                 size="large"
                 sx={{
                   bgcolor: 'white',
-                  color: 'primary.main',
-                  '&:hover': { bgcolor: 'grey.100' },
+                  color: '#8B4513',
+                  '&:hover': { 
+                    bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    color: '#5C2E0C'
+                  },
                 }}
               >
                 {t('visit.schedule')}
@@ -255,6 +292,14 @@ const Home = () => {
           </Grid>
         </Container>
       </Box>
+
+      {/* Gallery Modal */}
+      <ProductGallery
+        open={galleryOpen}
+        onClose={handleGalleryClose}
+        title={selectedProduct?.title}
+        images={selectedProduct?.gallery || []}
+      />
     </Box>
   );
 };

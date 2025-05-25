@@ -25,13 +25,32 @@
     "subtitle": "Discover our range of high-quality wood products",
     "categories": {
       "plywood": "Plywood",
-      "melamine": "Prefinished Melamine",
-      "veneer": "Wood Veneer"
+      "melamine": "Prefinished Melamine Plywood",
+      "veneer": "Wood Veneer",
+      "logs": "Wood Logs"
     },
-    "logs": "Wood Logs",
-    "plywood.premium": "Premium Plywood",
-    "plywood.marine": "Marine Plywood",
-    "plywood.structural": "Structural Plywood"
+    "plywood": {
+      "title": "Plywood",
+      "premium": "Premium Plywood",
+      "marine": "Marine Plywood",
+      "structural": "Structural Plywood"
+    },
+    "melamine": {
+      "title": "Prefinished Melamine Plywood",
+      "standard": "Standard Colors",
+      "custom": "Custom Colors"
+    },
+    "veneer": {
+      "title": "Wood Veneer",
+      "okoume": "Okoume Veneer",
+      "mahogany": "Mahogany Veneer",
+      "ayous": "Ayous Veneer",
+      "sapele": "Sapele Veneer"
+    },
+    "logs": {
+      "title": "Wood Logs",
+      "raw": "Raw Wood Logs"
+    }
   },
   "wood": {
     "okoume": "Okoume (Aucoumea klaineana)",
@@ -39,6 +58,7 @@
     "ayous": "Ayous (Triplochiton scleroxylon)",
     "sapele": "Sapele (Entandrophragma cylindricum)"
   },
+  "viewGallery": "View Gallery",
   "common": {
     "learnMore": "Learn More",
     "viewDetails": "View Details",

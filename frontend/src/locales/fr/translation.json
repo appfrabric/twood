@@ -25,20 +25,32 @@
     "subtitle": "Découvrez notre gamme de produits en bois de haute qualité",
     "categories": {
       "plywood": "Contreplaqué",
-      "melamine": "Mélamine Préfinition",
+      "melamine": "Contreplaqué Mélamine Préfinition",
       "veneer": "Placage de Bois",
-      "logs": "Grumes de Bois",
-      "plywood.premium": "Contreplaqué Premium",
-      "plywood.marine": "Contreplaqué Marine",
-      "plywood.structural": "Contreplaqué Structurel"
+      "logs": "Grumes de Bois"
     },
-    "plywood": "Contreplaqué",
-    "melamine": "Mélamine Préfinition",
-    "veneer": "Placage de Bois",
-    "logs": "Grumes de Bois",
-    "plywood.premium": "Contreplaqué Premium",
-    "plywood.marine": "Contreplaqué Marine",
-    "plywood.structural": "Contreplaqué Structurel"
+    "plywood": {
+      "title": "Contreplaqué",
+      "premium": "Contreplaqué Premium",
+      "marine": "Contreplaqué Marine",
+      "structural": "Contreplaqué Structurel"
+    },
+    "melamine": {
+      "title": "Contreplaqué Mélamine Préfinition",
+      "standard": "Couleurs Standard",
+      "custom": "Couleurs Sur Mesure"
+    },
+    "veneer": {
+      "title": "Placage de Bois",
+      "okoume": "Placage Okoumé",
+      "mahogany": "Placage Acajou",
+      "ayous": "Placage Ayous",
+      "sapele": "Placage Sapelli"
+    },
+    "logs": {
+      "title": "Grumes de Bois",
+      "raw": "Grumes de Bois Brut"
+    }
   },
   "wood": {
     "okoume": "Okoumé (Aucoumea klaineana)",
@@ -46,6 +58,7 @@
     "ayous": "Ayous (Triplochiton scleroxylon)",
     "sapele": "Sapelli (Entandrophragma cylindricum)"
   },
+  "viewGallery": "Voir la Galerie",
   "common": {
     "learnMore": "En Savoir Plus",
     "viewDetails": "Voir les Détails",

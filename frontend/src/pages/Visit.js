@@ -149,7 +149,14 @@ const Visit = () => {
               href="mailto:tours@tropicalwood.com"
               variant="contained"
               size="large"
-              sx={{ mt: 2 }}
+              sx={{
+                bgcolor: 'white',
+                color: '#8B4513',
+                '&:hover': { 
+                  bgcolor: 'rgba(255, 255, 255, 0.9)',
+                  color: '#5C2E0C'
+                },
+              }}
             >
               {t('visit.schedule')}
             </Button>

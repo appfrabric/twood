@@ -219,6 +219,14 @@ const Contact = () => {
                       variant="contained"
                       size="large"
                       fullWidth
+                      sx={{
+                        bgcolor: 'white',
+                        color: '#8B4513',
+                        '&:hover': { 
+                          bgcolor: 'rgba(255, 255, 255, 0.9)',
+                          color: '#5C2E0C'
+                        },
+                      }}
                     >
                       {t('contact.form.submit')}
                     </Button>
