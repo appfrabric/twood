@@ -103,7 +103,7 @@ const Contact = () => {
       <Box
         sx={{
           position: 'relative',
-          height: '40vh',
+          height: '30vh',
           display: 'flex',
           alignItems: 'center',
           backgroundImage: `url(${IMAGES.contact.hero})`,

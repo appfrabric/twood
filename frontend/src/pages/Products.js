@@ -232,15 +232,19 @@ const Products = () => {
                   >
                     <Card
                       sx={{
-                        height: '100%',
+                        height: '500px',
                         display: 'flex',
                         flexDirection: 'column',
                         transition: 'transform 0.2s',
                         backgroundColor: 'white',
                         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        border: '1px solid #8B4513',
                         '&:hover': {
                           transform: 'translateY(-8px)',
                           boxShadow: '0px 8px 16px rgba(74, 103, 65, 0.15)',
+                          border: '1px solid #5C2E0C',
                         },
                       }}
                     >
@@ -249,26 +253,56 @@ const Products = () => {
                         height="240"
                         image={product.image}
                         alt={product.title}
+                        sx={{ objectFit: 'cover' }}
                       />
-                      <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h2" color="secondary.main">
+                      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                        <Typography 
+                          gutterBottom 
+                          variant="h5" 
+                          component="h2" 
+                          sx={{ 
+                            color: '#4A6741',
+                            fontWeight: 700,
+                            fontSize: '1.5rem',
+                            mb: 2,
+                            fontFamily: '"Playfair Display", serif',
+                            letterSpacing: '0.5px'
+                          }}
+                        >
                           {product.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography 
+                          variant="body2" 
+                          sx={{ 
+                            color: '#4A6741',
+                            fontSize: '1.1rem',
+                            lineHeight: 1.8,
+                            fontFamily: '"Roboto", sans-serif',
+                            opacity: 0.9,
+                            letterSpacing: '0.3px',
+                            fontWeight: 400,
+                            flexGrow: 1
+                          }}
+                        >
                           {product.description}
                         </Typography>
                       </CardContent>
-                      <Box sx={{ p: 2 }}>
+                      <Box sx={{ p: 3, pt: 0 }}>
                         <Button
                           component={RouterLink}
                           to={product.path}
                           variant="outlined"
                           fullWidth
                           sx={{
-                            borderColor: '#8B4513',
-                            color: '#8B4513',
+                            borderColor: '#4A6741',
+                            color: '#4A6741',
+                            fontWeight: 600,
+                            py: 1.5,
+                            fontSize: '1rem',
+                            fontFamily: '"Roboto", sans-serif',
+                            textTransform: 'none',
                             '&:hover': {
-                              borderColor: '#5C2E0C',
+                              borderColor: '#2E4128',
                               backgroundColor: 'rgba(74, 103, 65, 0.1)',
                             },
                           }}

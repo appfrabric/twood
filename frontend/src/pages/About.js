@@ -48,7 +48,7 @@ const About = () => {
       <Box
         sx={{
           position: 'relative',
-          height: '50vh',
+          height: '30vh',
           display: 'flex',
           alignItems: 'center',
           backgroundImage: `url(${IMAGES.about.hero})`,
