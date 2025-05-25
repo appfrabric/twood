@@ -118,14 +118,14 @@ const Home = () => {
               color="white"
               sx={{ mb: 2, maxWidth: '800px' }}
             >
-              Premium Wood Products from Cameroon
+              {t('home.hero.subtitle')}
             </Typography>
             <Typography
               variant="h5"
               color="white"
               sx={{ mb: 4, maxWidth: '800px', opacity: 0.9 }}
             >
-              A Division of Roi Lux
+              {t('footer.division')}
             </Typography>
             <Button
               component={RouterLink}
@@ -258,7 +258,7 @@ const Home = () => {
                 {t('visit.factory')}
               </Typography>
               <Typography variant="h6" color="white" paragraph>
-                Experience our state-of-the-art facilities and production process
+                {t('visit.subtitle')}
               </Typography>
               <Button
                 component={RouterLink}

@@ -1,6 +1,5 @@
 {
   "nav": {
-    "home": "Accueil",
     "about": "À Propos",
     "products": "Nos Produits",
     "visit": "Visitez-Nous",
@@ -33,19 +32,22 @@
       "title": "Contreplaqué",
       "premium": "Contreplaqué Premium",
       "marine": "Contreplaqué Marine",
-      "structural": "Contreplaqué Structurel"
+      "structural": "Contreplaqué Structurel",
+      "description": "Contreplaqué premium de haute qualité pour des applications exigeantes"
     },
     "melamine": {
       "title": "Contreplaqué Mélamine Préfinition",
       "standard": "Couleurs Standard",
-      "custom": "Couleurs Sur Mesure"
+      "custom": "Couleurs Sur Mesure",
+      "description": "Contreplaqué mélamine préfinition avec couleurs personnalisées"
     },
     "veneer": {
       "title": "Placage de Bois",
       "okoume": "Placage Okoumé",
       "mahogany": "Placage Acajou",
       "ayous": "Placage Ayous",
-      "sapele": "Placage Sapelli"
+      "sapele": "Placage Sapelli",
+      "description": "Placage de bois premium des meilleures essences du Cameroun"
     },
     "logs": {
       "title": "Grumes de Bois",
@@ -73,11 +75,33 @@
     "contact": "Informations de Contact",
     "hours": "Heures de Visite",
     "factory": "Visitez Notre Usine",
-    "schedule": "Planifier une Visite"
+    "schedule": "Planifier une Visite",
+    "experience": "Découvrez Notre Installation",
+    "description": "Nous vous invitons à visiter notre installation de fabrication de pointe à Douala, Cameroun. Nos visites guidées vous offrent un aperçu détaillé de nos processus de production, de nos mesures de contrôle qualité et du savoir-faire qui entre dans chaque produit.",
+    "opportunities": "Lors de votre visite, vous aurez l'opportunité de :",
+    "opportunitiesList": {
+      "tour": "Visiter nos installations de production modernes",
+      "quality": "Assister à nos processus de contrôle qualité",
+      "showroom": "Explorer notre showroom de produits",
+      "team": "Rencontrer notre équipe expérimentée",
+      "requirements": "Discuter de vos besoins spécifiques"
+    },
+    "gallery": {
+      "title": "Galerie de l'Usine",
+      "exterior": "Notre installation de pointe à Douala",
+      "production": "Ligne de production moderne pour la fabrication de contreplaqué",
+      "quality": "Processus rigoureux de contrôle qualité",
+      "warehouse": "Entrepôt spacieux pour le stockage des produits",
+      "showroom": "Showroom de produits pour les clients",
+      "shipping": "Zone efficace de chargement et d'expédition"
+    }
   },
   "contact": {
     "title": "Contactez-nous",
     "subtitle": "Entrez en contact avec notre équipe",
+    "getInTouch": "Contactez-Nous",
+    "description": "Vous avez des questions sur nos produits ou services ? Nous aimerions avoir de vos nouvelles. Remplissez le formulaire et nous vous répondrons dès que possible.",
+    "success": "Merci pour votre message. Nous vous répondrons bientôt !",
     "form": {
       "name": "Nom",
       "email": "Email",
@@ -85,5 +109,9 @@
       "message": "Message",
       "submit": "Envoyer le Message"
     }
+  },
+  "footer": {
+    "division": "Une division de Roi Lux",
+    "partner": "Votre partenaire de confiance en produits de bois premium du Cameroun"
   }
 } 

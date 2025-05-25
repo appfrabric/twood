@@ -145,10 +145,10 @@ const Contact = () => {
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
             <Typography variant="h3" gutterBottom color="primary.main">
-              Get in Touch
+              {t('contact.getInTouch')}
             </Typography>
             <Typography variant="body1" paragraph>
-              Have questions about our products or services? We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
+              {t('contact.description')}
             </Typography>
             <Box
               component="img"
@@ -168,65 +168,54 @@ const Contact = () => {
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
                     <TextField
+                      required
                       fullWidth
                       label={t('contact.form.name')}
-                      variant="outlined"
-                      required
-                      name="name"
                       value={formData.name}
-                      onChange={handleChange}
+                      onChange={(e) => handleChange('name', e.target.value)}
+                      margin="normal"
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
+                      required
                       fullWidth
                       label={t('contact.form.email')}
-                      variant="outlined"
                       type="email"
-                      required
-                      name="email"
                       value={formData.email}
-                      onChange={handleChange}
+                      onChange={(e) => handleChange('email', e.target.value)}
+                      margin="normal"
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label={t('contact.form.phone')}
-                      variant="outlined"
-                      type="tel"
-                      name="phone"
                       value={formData.phone}
-                      onChange={handleChange}
+                      onChange={(e) => handleChange('phone', e.target.value)}
+                      margin="normal"
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
+                      required
                       fullWidth
                       label={t('contact.form.message')}
-                      variant="outlined"
                       multiline
                       rows={4}
-                      required
-                      name="message"
                       value={formData.message}
-                      onChange={handleChange}
+                      onChange={(e) => handleChange('message', e.target.value)}
+                      margin="normal"
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <Button
                       type="submit"
                       variant="contained"
+                      color="primary"
                       size="large"
                       fullWidth
-                      sx={{
-                        bgcolor: 'white',
-                        color: '#8B4513',
-                        '&:hover': { 
-                          bgcolor: 'rgba(255, 255, 255, 0.9)',
-                          color: '#5C2E0C'
-                        },
-                      }}
+                      sx={{ mt: 2 }}
                     >
                       {t('contact.form.submit')}
                     </Button>

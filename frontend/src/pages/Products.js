@@ -17,8 +17,19 @@ import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import { IMAGES } from '../constants/images';
 import ProductGallery from '../components/ProductGallery';
+import { styled } from '@mui/material/styles';
 
 const MotionBox = motion(Box);
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  transition: 'transform 0.3s ease-in-out',
+  '&:hover': {
+    transform: 'translateY(-8px)',
+  },
+}));
 
 const Products = () => {
   const { t } = useTranslation();
@@ -316,24 +327,7 @@ const Products = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <Card
-                      sx={{
-                        height: '500px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        transition: 'transform 0.2s',
-                        backgroundColor: 'white',
-                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        border: '1px solid #8B4513',
-                        '&:hover': {
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0px 8px 16px rgba(74, 103, 65, 0.15)',
-                          border: '1px solid #5C2E0C',
-                        },
-                      }}
-                    >
+                    <StyledCard>
                       <CardMedia
                         component="img"
                         height="240"
@@ -395,7 +389,7 @@ const Products = () => {
                           {t('viewGallery')}
                         </Button>
                       </Box>
-                    </Card>
+                    </StyledCard>
                   </MotionBox>
                 </Grid>
               ))}

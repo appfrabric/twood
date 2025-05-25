@@ -30,33 +30,33 @@ const Visit = () => {
   const galleryImages = [
     {
       src: IMAGES.about.gallery[0],
-      alt: 'Factory Exterior',
-      description: 'Our state-of-the-art facility in Douala',
+      alt: 'exterior',
+      description: 'exterior',
     },
     {
       src: IMAGES.about.gallery[1],
-      alt: 'Production Line',
-      description: 'Modern production line for plywood manufacturing',
+      alt: 'production',
+      description: 'production',
     },
     {
       src: IMAGES.about.gallery[2],
-      alt: 'Quality Control',
-      description: 'Rigorous quality control process',
+      alt: 'quality',
+      description: 'quality',
     },
     {
       src: IMAGES.about.factoryExterior,
-      alt: 'Warehouse',
-      description: 'Spacious warehouse for product storage',
+      alt: 'warehouse',
+      description: 'warehouse',
     },
     {
       src: IMAGES.about.team,
-      alt: 'Showroom',
-      description: 'Product showroom for clients',
+      alt: 'showroom',
+      description: 'showroom',
     },
     {
       src: IMAGES.about.values,
-      alt: 'Loading Area',
-      description: 'Efficient loading and shipping area',
+      alt: 'shipping',
+      description: 'shipping',
     },
   ];
 
@@ -118,7 +118,7 @@ const Visit = () => {
                 fontWeight: 700,
               }}
             >
-              {t('visit.factory')}
+              {t('visit.title')}
             </Typography>
           </MotionBox>
         </Container>
@@ -129,20 +129,20 @@ const Visit = () => {
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
             <Typography variant="h3" gutterBottom color="primary.main">
-              Experience Our Facility
+              {t('visit.subtitle')}
             </Typography>
             <Typography variant="body1" paragraph>
-              We invite you to visit our state-of-the-art manufacturing facility in Douala, Cameroon. Our guided tours provide an in-depth look at our production processes, quality control measures, and the craftsmanship that goes into every product.
+              {t('visit.description')}
             </Typography>
             <Typography variant="body1" paragraph>
-              During your visit, you'll have the opportunity to:
+              {t('visit.opportunities')}
             </Typography>
             <ul>
-              <li>Tour our modern production facilities</li>
-              <li>Witness our quality control processes</li>
-              <li>Explore our product showroom</li>
-              <li>Meet our experienced team</li>
-              <li>Discuss your specific requirements</li>
+              <li>{t('visit.opportunitiesList.tour')}</li>
+              <li>{t('visit.opportunitiesList.quality')}</li>
+              <li>{t('visit.opportunitiesList.showroom')}</li>
+              <li>{t('visit.opportunitiesList.team')}</li>
+              <li>{t('visit.opportunitiesList.requirements')}</li>
             </ul>
             <Button
               component="a"
@@ -186,7 +186,7 @@ const Visit = () => {
             color="primary.main"
             sx={{ mb: 6 }}
           >
-            {t('visit.gallery')}
+            {t('visit.gallery.title')}
           </Typography>
           <Grid container spacing={4}>
             {galleryImages.map((image, index) => (
@@ -218,10 +218,10 @@ const Visit = () => {
                     />
                     <CardContent>
                       <Typography variant="h6" gutterBottom>
-                        {image.alt}
+                        {t(`visit.gallery.${image.alt}`)}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        {image.description}
+                        {t(`visit.gallery.${image.description}`)}
                       </Typography>
                     </CardContent>
                   </Card>

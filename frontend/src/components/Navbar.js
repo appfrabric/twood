@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import LanguageIcon from '@mui/icons-material/Language';
+import HomeIcon from '@mui/icons-material/Home';
 import { Link as RouterLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -32,7 +33,7 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { key: 'home', label: t('nav.home'), path: '/' },
+    { key: 'home', path: '/' },
     { key: 'about', label: t('nav.about'), path: '/about' },
     { key: 'products', label: t('nav.products'), path: '/products' },
     { key: 'visit', label: t('nav.visit'), path: '/visit' },
@@ -88,7 +89,7 @@ const Navbar = () => {
                       },
                     }}
                   >
-                    {item.label}
+                    {item.key === 'home' ? <HomeIcon /> : item.label}
                   </MenuItem>
                 ))}
               </Menu>
@@ -138,27 +139,47 @@ const Navbar = () => {
               </Typography>
               <Box sx={{ display: 'flex', flexGrow: 1 }}>
                 {navItems.map((item) => (
-                  <Button
-                    key={item.key}
-                    component={RouterLink}
-                    to={item.path}
-                    color="inherit"
-                    sx={{
-                      color: location.pathname === item.path ? '#5C2E0C' : '#8B4513',
-                      fontWeight: location.pathname === item.path ? 700 : 600,
-                      fontSize: '1.1rem',
-                      textTransform: 'none',
-                      minWidth: 120,
-                      px: 3,
-                      py: 1.5,
-                      backgroundColor: location.pathname === item.path ? 'rgba(74, 103, 65, 0.15)' : 'transparent',
-                      '&:hover': {
-                        backgroundColor: 'rgba(74, 103, 65, 0.2)',
-                      },
-                    }}
-                  >
-                    {item.label}
-                  </Button>
+                  item.key === 'home' ? (
+                    <IconButton
+                      key={item.key}
+                      component={RouterLink}
+                      to={item.path}
+                      sx={{
+                        color: location.pathname === item.path ? '#5C2E0C' : '#8B4513',
+                        minWidth: 60,
+                        px: 2,
+                        py: 1.5,
+                        backgroundColor: location.pathname === item.path ? 'rgba(74, 103, 65, 0.15)' : 'transparent',
+                        '&:hover': {
+                          backgroundColor: 'rgba(74, 103, 65, 0.2)',
+                        },
+                      }}
+                    >
+                      <HomeIcon sx={{ fontSize: 28 }} />
+                    </IconButton>
+                  ) : (
+                    <Button
+                      key={item.key}
+                      component={RouterLink}
+                      to={item.path}
+                      color="inherit"
+                      sx={{
+                        color: location.pathname === item.path ? '#5C2E0C' : '#8B4513',
+                        fontWeight: location.pathname === item.path ? 700 : 600,
+                        fontSize: '1.1rem',
+                        textTransform: 'none',
+                        minWidth: 120,
+                        px: 3,
+                        py: 1.5,
+                        backgroundColor: location.pathname === item.path ? 'rgba(74, 103, 65, 0.15)' : 'transparent',
+                        '&:hover': {
+                          backgroundColor: 'rgba(74, 103, 65, 0.2)',
+                        },
+                      }}
+                    >
+                      {item.label}
+                    </Button>
+                  )
                 ))}
               </Box>
               <Box
