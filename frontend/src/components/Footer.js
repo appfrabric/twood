@@ -22,10 +22,10 @@ const Footer = () => {
     {
       title: t('nav.products'),
       links: [
-        { label: t('products.plywood'), path: '/products/plywood' },
-        { label: t('products.melamine'), path: '/products/melamine' },
-        { label: t('products.veneer'), path: '/products/veneer' },
-        { label: t('products.logs'), path: '/products/logs' },
+        { label: t('products.categories.plywood'), path: '/products/plywood' },
+        { label: t('products.categories.melamine'), path: '/products/melamine' },
+        { label: t('products.categories.veneer'), path: '/products/veneer' },
+        { label: t('products.categories.logs'), path: '/products/logs' },
       ],
     },
     {

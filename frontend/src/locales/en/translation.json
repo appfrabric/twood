@@ -51,7 +51,8 @@
     },
     "logs": {
       "title": "Wood Logs",
-      "raw": "Raw Wood Logs"
+      "raw": "Raw Wood Logs",
+      "description": "High-quality raw wood logs from Cameroon's finest forests"
     }
   },
   "wood": {

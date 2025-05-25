@@ -52,14 +52,14 @@ const Products = () => {
   const productCategories = [
     {
       id: 'plywood',
-      title: t('products.plywood.title'),
+      title: t('products.categories.plywood'),
       image: 'images/products/plywood/main.jpg',
-      description: 'High-quality plywood products for various applications',
+      description: t('products.plywood.description'),
       products: [
         {
           title: `${t('products.plywood.premium')} - ${t('wood.okoume')}`,
           image: 'images/products/plywood/premium.jpg',
-          description: 'Premium grade plywood made from Okoume wood for demanding applications',
+          description: t('products.plywood.description'),
           path: '/products/plywood/premium',
           gallery: [
             'images/products/plywood/premium/gallery/1.jpg',
@@ -71,7 +71,7 @@ const Products = () => {
         {
           title: `${t('products.plywood.marine')} - ${t('wood.mahogany')}`,
           image: 'images/products/plywood/marine.jpg',
-          description: 'Marine-grade plywood made from Mahogany for water-resistant applications',
+          description: t('products.plywood.description'),
           path: '/products/plywood/marine',
           gallery: [
             'images/products/plywood/marine/gallery/1.jpg',
@@ -83,7 +83,7 @@ const Products = () => {
         {
           title: `${t('products.plywood.structural')} - ${t('wood.ayous')}`,
           image: 'images/products/plywood/structural.jpg',
-          description: 'Structural plywood made from Ayous for construction applications',
+          description: t('products.plywood.description'),
           path: '/products/plywood/structural',
           gallery: [
             'images/products/plywood/structural/gallery/1.jpg',
@@ -96,14 +96,14 @@ const Products = () => {
     },
     {
       id: 'melamine',
-      title: t('products.melamine.title'),
+      title: t('products.categories.melamine'),
       image: 'images/products/melamine/main.jpg',
-      description: 'Custom-colored prefinished melamine plywood',
+      description: t('products.melamine.description'),
       products: [
         {
           title: t('products.melamine.standard'),
           image: 'images/products/melamine/standard.jpg',
-          description: 'Wide range of standard color options',
+          description: t('products.melamine.description'),
           path: '/products/melamine/standard',
           gallery: [
             'images/products/melamine/standard/gallery/1.jpg',
@@ -115,7 +115,7 @@ const Products = () => {
         {
           title: t('products.melamine.custom'),
           image: 'images/products/melamine/custom.jpg',
-          description: 'Custom color matching services',
+          description: t('products.melamine.description'),
           path: '/products/melamine/custom',
           gallery: [
             'images/products/melamine/custom/gallery/1.jpg',
@@ -128,14 +128,14 @@ const Products = () => {
     },
     {
       id: 'veneer',
-      title: t('products.veneer.title'),
+      title: t('products.categories.veneer'),
       image: 'images/products/veneer/main.jpg',
-      description: 'Premium wood veneer from Cameroon\'s finest woods',
+      description: t('products.veneer.description'),
       products: [
         {
           title: t('products.veneer.okoume'),
           image: 'images/products/veneer/okoume.jpg',
-          description: 'Premium Okoume wood veneer',
+          description: t('products.veneer.description'),
           path: '/products/veneer/okoume',
           gallery: [
             'images/products/veneer/okoume/gallery/1.jpg',
@@ -147,7 +147,7 @@ const Products = () => {
         {
           title: t('products.veneer.mahogany'),
           image: 'images/products/veneer/mahogany.jpg',
-          description: 'Rich Mahogany wood veneer',
+          description: t('products.veneer.description'),
           path: '/products/veneer/mahogany',
           gallery: [
             'images/products/veneer/mahogany/gallery/1.jpg',
@@ -159,7 +159,7 @@ const Products = () => {
         {
           title: t('products.veneer.ayous'),
           image: 'images/products/veneer/ayous.jpg',
-          description: 'Light Ayous wood veneer',
+          description: t('products.veneer.description'),
           path: '/products/veneer/ayous',
           gallery: [
             'images/products/veneer/ayous/gallery/1.jpg',
@@ -171,7 +171,7 @@ const Products = () => {
         {
           title: t('products.veneer.sapele'),
           image: 'images/products/veneer/sapele.jpg',
-          description: 'Elegant Sapele wood veneer',
+          description: t('products.veneer.description'),
           path: '/products/veneer/sapele',
           gallery: [
             'images/products/veneer/sapele/gallery/1.jpg',
@@ -184,14 +184,14 @@ const Products = () => {
     },
     {
       id: 'logs',
-      title: t('products.logs.title'),
+      title: t('products.categories.logs'),
       image: 'images/products/logs/main.jpg',
-      description: 'Premium wood logs from Cameroon\'s finest forests',
+      description: t('products.logs.description'),
       products: [
         {
           title: t('products.logs.raw'),
           image: 'images/products/logs/main.jpg',
-          description: 'High-quality raw wood logs including Okoume, Mahogany, Ayous, and Sapele. Perfect for various applications including furniture making, construction, and plywood production.',
+          description: t('products.logs.description'),
           path: '/products/logs',
           gallery: [
             'images/products/logs/gallery/1.jpg',
