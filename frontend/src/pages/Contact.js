@@ -212,10 +212,19 @@ const Contact = () => {
                     <Button
                       type="submit"
                       variant="contained"
-                      color="primary"
                       size="large"
                       fullWidth
-                      sx={{ mt: 2 }}
+                      sx={{
+                        mt: 2,
+                        bgcolor: 'white',
+                        color: '#8B4513',
+                        border: '2px solid #8B4513',
+                        '&:hover': {
+                          bgcolor: '#5C2E0C',
+                          color: 'white',
+                          border: '2px solid #8B4513',
+                        },
+                      }}
                     >
                       {t('contact.form.submit')}
                     </Button>

@@ -33,7 +33,6 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { key: 'home', path: '/' },
     { key: 'about', label: t('nav.about'), path: '/about' },
     { key: 'products', label: t('nav.products'), path: '/products' },
     { key: 'visit', label: t('nav.visit'), path: '/visit' },
@@ -135,82 +134,59 @@ const Navbar = () => {
                   fontSize: '1.2rem',
                 }}
               >
-                Tropical Wood Inc.
+                Tropical Wood Inc.  <HomeIcon /> 
               </Typography>
-              <Box sx={{ display: 'flex', flexGrow: 1 }}>
+              <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end' }}>
                 {navItems.map((item) => (
-                  item.key === 'home' ? (
-                    <IconButton
-                      key={item.key}
-                      component={RouterLink}
-                      to={item.path}
-                      sx={{
-                        color: location.pathname === item.path ? '#5C2E0C' : '#8B4513',
-                        minWidth: 60,
-                        px: 2,
-                        py: 1.5,
-                        backgroundColor: location.pathname === item.path ? 'rgba(74, 103, 65, 0.15)' : 'transparent',
-                        '&:hover': {
-                          backgroundColor: 'rgba(74, 103, 65, 0.2)',
-                        },
-                      }}
-                    >
-                      <HomeIcon sx={{ fontSize: 28 }} />
-                    </IconButton>
-                  ) : (
-                    <Button
-                      key={item.key}
-                      component={RouterLink}
-                      to={item.path}
-                      color="inherit"
-                      sx={{
-                        color: location.pathname === item.path ? '#5C2E0C' : '#8B4513',
-                        fontWeight: location.pathname === item.path ? 700 : 600,
-                        fontSize: '1.1rem',
-                        textTransform: 'none',
-                        minWidth: 120,
-                        px: 3,
-                        py: 1.5,
-                        backgroundColor: location.pathname === item.path ? 'rgba(74, 103, 65, 0.15)' : 'transparent',
-                        '&:hover': {
-                          backgroundColor: 'rgba(74, 103, 65, 0.2)',
-                        },
-                      }}
-                    >
-                      {item.label}
-                    </Button>
-                  )
+                  <Button
+                    key={item.key}
+                    component={RouterLink}
+                    to={item.path}
+                    sx={{
+                      color: '#8B4513',
+                      px: 3,
+                      py: 1.5,
+                      fontSize: '1rem',
+                      fontWeight: location.pathname === item.path ? 700 : 500,
+                      textTransform: 'none',
+                      borderRadius: 0,
+                      '&:hover': {
+                        backgroundColor: 'rgba(74, 103, 65, 0.2)',
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Button>
                 ))}
-              </Box>
-              <Box
-                sx={{
-                  borderLeft: '2px solid #8B4513',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <IconButton
-                  color="inherit"
-                  onClick={(e) => setLangMenuAnchor(e.currentTarget)}
+                <Box
                   sx={{
-                    color: '#8B4513',
-                    px: 3,
-                    py: 1.5,
-                    '&:hover': {
-                      backgroundColor: 'rgba(74, 103, 65, 0.2)',
-                    },
+                    display: 'flex',
+                    alignItems: 'center',
                   }}
                 >
-                  <LanguageIcon />
-                </IconButton>
-                <Menu
-                  anchorEl={langMenuAnchor}
-                  open={Boolean(langMenuAnchor)}
-                  onClose={() => setLangMenuAnchor(null)}
-                >
-                  <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
-                  <MenuItem onClick={() => handleLanguageChange('fr')}>Français</MenuItem>
-                </Menu>
+                  <IconButton
+                    color="inherit"
+                    onClick={(e) => setLangMenuAnchor(e.currentTarget)}
+                    sx={{
+                      color: '#8B4513',
+                      px: 3,
+                      py: 1.5,
+                      '&:hover': {
+                        backgroundColor: 'rgba(74, 103, 65, 0.2)',
+                      },
+                    }}
+                  >
+                    <LanguageIcon />
+                  </IconButton>
+                  <Menu
+                    anchorEl={langMenuAnchor}
+                    open={Boolean(langMenuAnchor)}
+                    onClose={() => setLangMenuAnchor(null)}
+                  >
+                    <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
+                    <MenuItem onClick={() => handleLanguageChange('fr')}>Français</MenuItem>
+                  </Menu>
+                </Box>
               </Box>
             </Box>
           )}

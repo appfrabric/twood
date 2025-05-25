@@ -26,9 +26,12 @@ const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
-  transition: 'transform 0.3s ease-in-out',
+  transition: 'transform 0.2s, box-shadow 0.2s',
+  border: '1px solid #8B4513',
   '&:hover': {
     transform: 'translateY(-8px)',
+    boxShadow: theme.shadows[8],
+    border: '1px solid #5C2E0C',
   },
 }));
 
@@ -271,6 +274,9 @@ const Products = () => {
                 backgroundColor: '#8B4513',
                 height: '3px',
               },
+              '& .MuiTabs-flexContainer': {
+                justifyContent: 'flex-start',
+              },
               '& .MuiTab-root': {
                 color: '#8B4513',
                 fontWeight: 600,
@@ -380,23 +386,24 @@ const Products = () => {
                         left: 0,
                         right: 0,
                         p: 3,
-                        backgroundColor: 'white'
+                        backgroundColor: 'white',
                       }}>
                         <Button
                           onClick={() => handleGalleryOpen(product)}
                           variant="outlined"
                           fullWidth
                           sx={{
-                            borderColor: '#4A6741',
-                            color: '#4A6741',
+                            borderColor: '#8B4513',
+                            color: '#8B4513',
                             fontWeight: 600,
                             py: 1.5,
                             fontSize: '1rem',
                             fontFamily: '"Roboto", sans-serif',
                             textTransform: 'none',
                             '&:hover': {
-                              borderColor: '#2E4128',
-                              backgroundColor: 'rgba(74, 103, 65, 0.1)',
+                              borderColor: '#5C2E0C',
+                              backgroundColor: 'rgba(139, 69, 19, 0.1)',
+                              color: '#5C2E0C'
                             },
                           }}
                         >
