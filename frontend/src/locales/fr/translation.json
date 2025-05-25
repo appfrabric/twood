@@ -2,8 +2,8 @@
   "nav": {
     "home": "Accueil",
     "about": "À Propos",
-    "products": "Produits",
-    "visit": "Visitez-nous",
+    "products": "Nos Produits",
+    "visit": "Visitez-Nous",
     "contact": "Contact"
   },
   "home": {
@@ -25,16 +25,42 @@
     "subtitle": "Découvrez notre gamme de produits en bois de haute qualité",
     "categories": {
       "plywood": "Contreplaqué",
-      "melamine": "Mélamine",
-      "veneer": "Placage"
-    }
+      "melamine": "Mélamine Préfinition",
+      "veneer": "Placage de Bois",
+      "logs": "Grumes de Bois",
+      "plywood.premium": "Contreplaqué Premium",
+      "plywood.marine": "Contreplaqué Marine",
+      "plywood.structural": "Contreplaqué Structurel"
+    },
+    "plywood": "Contreplaqué",
+    "melamine": "Mélamine Préfinition",
+    "veneer": "Placage de Bois",
+    "logs": "Grumes de Bois",
+    "plywood.premium": "Contreplaqué Premium",
+    "plywood.marine": "Contreplaqué Marine",
+    "plywood.structural": "Contreplaqué Structurel"
+  },
+  "wood": {
+    "okoume": "Okoumé (Aucoumea klaineana)",
+    "mahogany": "Acajou (Khaya ivorensis)",
+    "ayous": "Ayous (Triplochiton scleroxylon)",
+    "sapele": "Sapelli (Entandrophragma cylindricum)"
+  },
+  "common": {
+    "learnMore": "En Savoir Plus",
+    "viewDetails": "Voir les Détails",
+    "contactUs": "Contactez-Nous",
+    "customOrder": "Besoin d'une Solution Sur Mesure ?",
+    "schedule": "Planifier une Visite"
   },
   "visit": {
     "title": "Visitez Notre Usine",
     "subtitle": "Découvrez notre excellence manufacturière",
     "address": "Notre Adresse",
     "contact": "Informations de Contact",
-    "hours": "Heures de Visite"
+    "hours": "Heures de Visite",
+    "factory": "Visitez Notre Usine",
+    "schedule": "Planifier une Visite"
   },
   "contact": {
     "title": "Contactez-nous",

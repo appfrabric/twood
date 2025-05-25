@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About Us",
-    "products": "Products",
+    "about": "About",
+    "products": "Our Products",
     "visit": "Visit Us",
     "contact": "Contact"
   },
@@ -25,16 +25,35 @@
     "subtitle": "Discover our range of high-quality wood products",
     "categories": {
       "plywood": "Plywood",
-      "melamine": "Melamine",
-      "veneer": "Veneer"
-    }
+      "melamine": "Prefinished Melamine",
+      "veneer": "Wood Veneer"
+    },
+    "logs": "Wood Logs",
+    "plywood.premium": "Premium Plywood",
+    "plywood.marine": "Marine Plywood",
+    "plywood.structural": "Structural Plywood"
+  },
+  "wood": {
+    "okoume": "Okoume (Aucoumea klaineana)",
+    "mahogany": "Mahogany (Khaya ivorensis)",
+    "ayous": "Ayous (Triplochiton scleroxylon)",
+    "sapele": "Sapele (Entandrophragma cylindricum)"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "viewDetails": "View Details",
+    "contactUs": "Contact Us",
+    "customOrder": "Need a Custom Solution?",
+    "schedule": "Schedule a Visit"
   },
   "visit": {
     "title": "Visit Our Factory",
     "subtitle": "Experience our manufacturing excellence firsthand",
     "address": "Our Location",
     "contact": "Contact Information",
-    "hours": "Visiting Hours"
+    "hours": "Visiting Hours",
+    "factory": "Visit Our Factory",
+    "schedule": "Schedule a Visit"
   },
   "contact": {
     "title": "Contact Us",

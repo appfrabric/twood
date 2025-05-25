@@ -103,6 +103,20 @@ const Products = () => {
         },
       ],
     },
+    {
+      id: 'logs',
+      title: t('products.logs'),
+      image: 'images/products/logs/main.jpg',
+      description: 'Premium wood logs from Cameroon\'s finest forests',
+      products: [
+        {
+          title: 'Raw Wood Logs',
+          image: 'images/products/logs/main.jpg',
+          description: 'High-quality raw wood logs including Okoume, Mahogany, Ayous, and Sapele. Perfect for various applications including furniture making, construction, and plywood production.',
+          path: '/products/logs',
+        }
+      ],
+    },
   ];
 
   const handleTabChange = (event, newValue) => {
@@ -156,7 +170,6 @@ const Products = () => {
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <Box
           sx={{
-            border: '2px solid #8B4513',
             borderRadius: '8px',
             overflow: 'hidden',
             mb: 4,
