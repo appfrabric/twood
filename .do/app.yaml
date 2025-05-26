@@ -1,0 +1,33 @@
+name: roilux
+services:
+- name: frontend
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: appfrabric/twood
+  dockerfile_path: frontend/Dockerfile
+  http_port: 80
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
+
+- name: backend
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: appfrabric/twood
+  dockerfile_path: backend/Dockerfile
+  http_port: 5000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /api
+
+databases:
+- engine: PG
+  name: db
+  production: false
+  cluster_name: roilux-db
+  db_name: roilux
+  db_user: roilux 
