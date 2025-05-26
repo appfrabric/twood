@@ -5,35 +5,33 @@ services:
     branch: main
     deploy_on_push: true
     repo: appfrabric/twood
-  dockerfile_path: frontend/Dockerfile
+  source_dir: frontend
+  build_command: |
+    npm install
+    npm run build
+  run_command: npm start
   http_port: 3000
   instance_count: 1
   instance_size_slug: basic-xxs
   routes:
   - path: /
-  envs:
-  - key: REACT_APP_API_URL
-    value: ${backend.URL}
-    type: SECRET
 
 - name: backend
   github:
     branch: main
     deploy_on_push: true
     repo: appfrabric/twood
-  dockerfile_path: backend/Dockerfile
+  source_dir: backend
+  build_command: |
+    pip install -r requirements.txt
+  run_command: |
+    python create_admin.py
+    uvicorn main:app --host 0.0.0.0 --port 5000
   http_port: 5000
   instance_count: 1
   instance_size_slug: basic-xxs
   routes:
   - path: /api
-  envs:
-  - key: DATABASE_URL
-    value: ${db.DATABASE_URL}
-    type: SECRET
-  - key: SECRET_KEY
-    value: ${db.SECRET_KEY}
-    type: SECRET
 
 databases:
 - engine: PG
