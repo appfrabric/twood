@@ -1,1 +1,65 @@
- 
+name: roilux
+services:
+- name: app
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: appfrabric/twood
+  build_command: |
+    # Install PostgreSQL
+    apt-get update && apt-get install -y postgresql postgresql-contrib
+    # Start PostgreSQL service
+    service postgresql start
+    # Create database and user
+    su - postgres -c "psql -c \"CREATE USER roilux WITH PASSWORD 'roilux';\""
+    su - postgres -c "psql -c \"CREATE DATABASE roilux OWNER roilux;\""
+    # Install frontend dependencies and build
+    cd frontend && npm install && npm run build
+    # Install backend dependencies
+    cd ../backend && pip install -r requirements.txt
+  run_command: |
+    # Start PostgreSQL
+    service postgresql start
+    # Start backend
+    cd backend && python main.py &
+    # Start frontend
+    cd ../frontend && npm start
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xs
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: REACT_APP_API_URL
+    value: http://localhost:5000
+  - key: DATABASE_URL
+    value: postgresql://roilux:roilux@localhost:5432/roilux
+  - key: JWT_SECRET
+    value: ${JWT_SECRET}
+  - key: ADMIN_USERNAME
+    value: ${ADMIN_USERNAME}
+  - key: ADMIN_PASSWORD
+    value: ${ADMIN_PASSWORD}
+  health_check:
+    http_path: /
+    initial_delay_seconds: 30
+    period_seconds: 10
+    timeout_seconds: 5
+    success_threshold: 1
+    failure_threshold: 3
+  routes:
+  - path: /
+    preserve_path_prefix: true
+  ssl:
+    enabled: true
+    redirect_http: true
+    min_tls_version: "1.2"
+    certificate_type: "lets_encrypt"
+
+databases:
+- engine: PG
+  name: db
+  production: false
+  cluster_name: roilux-db
+  db_name: roilux
+  db_user: roilux 
