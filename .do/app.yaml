@@ -5,8 +5,9 @@ services:
     branch: main
     deploy_on_push: true
     repo: appfrabric/twood
-  build_command: cd frontend && npm install && npm run build
-  run_command: cd frontend && npm start
+  source_dir: frontend
+  build_command: npm install && npm run build
+  run_command: npm start
   http_port: 3000
   instance_count: 1
   instance_size_slug: basic-xxs
@@ -22,8 +23,9 @@ services:
     branch: main
     deploy_on_push: true
     repo: appfrabric/twood
-  build_command: cd backend && pip install -r requirements.txt
-  run_command: cd backend && python app.py
+  source_dir: backend
+  build_command: pip install -r requirements.txt
+  run_command: python app.py
   http_port: 5000
   instance_count: 1
   instance_size_slug: basic-xxs
