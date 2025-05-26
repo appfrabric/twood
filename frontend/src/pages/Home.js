@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Box,
@@ -10,11 +10,14 @@ import {
   CardContent,
   CardMedia,
   useTheme,
+  IconButton,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import { IMAGES } from '../constants/images';
 import ProductGallery from '../components/ProductGallery';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 const MotionBox = motion(Box);
 
@@ -23,6 +26,8 @@ const Home = () => {
   const theme = useTheme();
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
   const handleGalleryOpen = (product) => {
     setSelectedProduct(product);
@@ -32,6 +37,13 @@ const Home = () => {
   const handleGalleryClose = () => {
     setGalleryOpen(false);
     setSelectedProduct(null);
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
   };
 
   const featuredProducts = [
@@ -57,6 +69,12 @@ const Home = () => {
         'images/products/melamine/standard/gallery/2.jpg',
         'images/products/melamine/standard/gallery/3.jpg',
         'images/products/melamine/standard/gallery/4.jpg',
+        'images/products/melamine/standard/gallery/5.jpg',
+        'images/products/melamine/standard/gallery/6.jpg',
+        'images/products/melamine/standard/gallery/7.jpg',
+        'images/products/melamine/standard/gallery/8.jpg',
+        'images/products/melamine/standard/gallery/9.jpg',
+        'images/products/melamine/standard/gallery/10.jpg',
       ],
     },
     {
@@ -79,12 +97,10 @@ const Home = () => {
       <Box
         sx={{
           position: 'relative',
-          height: '40vh',
+          height: '48vh',
           display: 'flex',
           alignItems: 'center',
-          backgroundImage: `url(${IMAGES.home.hero})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          overflow: 'hidden',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -93,10 +109,43 @@ const Home = () => {
             right: 0,
             bottom: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 1,
           },
         }}
       >
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Box
+          component="video"
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          sx={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        >
+          <source src="/images/home/roiluxe video.mp4" type="video/mp4" />
+        </Box>
+        <IconButton
+          onClick={toggleMute}
+          sx={{
+            position: 'absolute',
+            top: 20,
+            right: 20,
+            zIndex: 3,
+            bgcolor: 'rgba(0, 0, 0, 0.5)',
+            color: 'white',
+            '&:hover': {
+              bgcolor: 'rgba(0, 0, 0, 0.7)',
+            },
+          }}
+        >
+          {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
+        </IconButton>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
           <MotionBox
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

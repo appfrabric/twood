@@ -27,6 +27,9 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy images directory
 COPY public/images /usr/share/nginx/html/images
 
+# Copy videos directory
+COPY public/videos /usr/share/nginx/html/videos
+
 # Expose port
 EXPOSE 80
 

@@ -48,22 +48,40 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically handle the form submission
-    // For now, we'll just show a success message
-    setSnackbar({
-      open: true,
-      message: 'Thank you for your message. We will get back to you soon!',
-      severity: 'success',
-    });
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
+    try {
+      const response = await fetch('/api/contact/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      setSnackbar({
+        open: true,
+        message: 'Thank you for your message. We will get back to you soon!',
+        severity: 'success',
+      });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: 'Failed to submit form. Please try again.',
+        severity: 'error',
+      });
+    }
   };
 
   const handleCloseSnackbar = () => {
@@ -171,8 +189,9 @@ const Contact = () => {
                       required
                       fullWidth
                       label={t('contact.form.name')}
+                      name="name"
                       value={formData.name}
-                      onChange={(e) => handleChange('name', e.target.value)}
+                      onChange={handleChange}
                       margin="normal"
                     />
                   </Grid>
@@ -181,9 +200,10 @@ const Contact = () => {
                       required
                       fullWidth
                       label={t('contact.form.email')}
+                      name="email"
                       type="email"
                       value={formData.email}
-                      onChange={(e) => handleChange('email', e.target.value)}
+                      onChange={handleChange}
                       margin="normal"
                     />
                   </Grid>
@@ -191,8 +211,9 @@ const Contact = () => {
                     <TextField
                       fullWidth
                       label={t('contact.form.phone')}
+                      name="phone"
                       value={formData.phone}
-                      onChange={(e) => handleChange('phone', e.target.value)}
+                      onChange={handleChange}
                       margin="normal"
                     />
                   </Grid>
@@ -201,10 +222,11 @@ const Contact = () => {
                       required
                       fullWidth
                       label={t('contact.form.message')}
+                      name="message"
                       multiline
                       rows={4}
                       value={formData.message}
-                      onChange={(e) => handleChange('message', e.target.value)}
+                      onChange={handleChange}
                       margin="normal"
                     />
                   </Grid>

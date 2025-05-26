@@ -12,6 +12,7 @@ import About from './pages/About';
 import Products from './pages/Products';
 import Visit from './pages/Visit';
 import Contact from './pages/Contact';
+import Admin from './pages/Admin';
 import { Box } from '@mui/material';
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path="/products" element={<Products />} />
                 <Route path="/visit" element={<Visit />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/admin" element={<Admin />} />
               </Routes>
             </Box>
             <Footer />
