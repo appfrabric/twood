@@ -151,10 +151,10 @@ const Visit = () => {
               size="large"
               sx={{
                 bgcolor: 'white',
-                color: '#8B4513',
+                color: '#2E7D32',
                 '&:hover': { 
                   bgcolor: 'rgba(255, 255, 255, 0.9)',
-                  color: '#5C2E0C'
+                  color: '#1B5E20'
                 },
               }}
             >

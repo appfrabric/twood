@@ -49,7 +49,7 @@ const ProductGallery = ({ open, onClose, title, images }) => {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: '#8B4513',
+            color: '#2E7D32',
             zIndex: 1,
             bgcolor: 'rgba(255, 255, 255, 0.9)',
             '&:hover': {

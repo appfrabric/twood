@@ -3,9 +3,9 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#4A6741', // Light green
+      main: '#2E7D32', // Green
       light: '#6B8C5F',
-      dark: '#2C3F25',
+      dark: '#1B5E20',
       contrastText: '#FFFFFF',
     },
     secondary: {
@@ -59,7 +59,7 @@ const theme = createTheme({
           textTransform: 'none',
           fontWeight: 700, // Increased from 500
           fontSize: '1.1rem', // Increased font size
-          color: '#8B4513', // Mahogany color for menu buttons
+          color: '#2E7D32', // Green color for menu buttons
           textShadow: '0px 1px 2px rgba(74, 103, 65, 0.15)', // Light green shadow
           '&:hover': {
             backgroundColor: 'rgba(74, 103, 65, 0.1)', // Light green background
@@ -86,7 +86,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#FFFFFF',
-          color: '#8B4513', // Mahogany color for menu text
+          color: '#2E7D32', // Green color for menu text
           boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)',
         },
       },
@@ -94,7 +94,7 @@ const theme = createTheme({
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: '#8B4513', // Mahogany color
+          color: '#2E7D32', // Green color
           fontWeight: 700, // Increased from 600
           fontSize: '1.1rem', // Increased font size
           textShadow: '0px 1px 2px rgba(74, 103, 65, 0.15)', // Light green shadow
@@ -108,10 +108,10 @@ const theme = createTheme({
           },
           '&.Mui-selected': {
             backgroundColor: 'rgba(74, 103, 65, 0.15)',
-            color: '#5C2E0C', // Darker mahogany
+            color: '#1B5E20', // Darker green
             fontWeight: 800, // Increased from 700
             textShadow: '0px 2px 4px rgba(74, 103, 65, 0.3)', // Stronger shadow for selected
-            border: '2px solid #8B4513',
+            border: '2px solid #2E7D32',
             '&:hover': {
               backgroundColor: 'rgba(74, 103, 65, 0.2)',
             },
@@ -122,12 +122,12 @@ const theme = createTheme({
     MuiListSubheader: {
       styleOverrides: {
         root: {
-          color: '#5C2E0C', // Darker mahogany
+          color: '#1B5E20', // Darker green
           fontWeight: 800, // Increased from 700
           fontSize: '1.2rem', // Increased font size
           backgroundColor: 'rgba(74, 103, 65, 0.05)', // Very light green background
           textShadow: '0px 2px 4px rgba(74, 103, 65, 0.25)', // Stronger light green text shadow
-          borderBottom: '2px solid #8B4513',
+          borderBottom: '2px solid #2E7D32',
           padding: '12px 16px',
         },
       },
@@ -135,7 +135,7 @@ const theme = createTheme({
     MuiListItemText: {
       styleOverrides: {
         primary: {
-          color: '#8B4513', // Mahogany color
+          color: '#2E7D32', // Green color
           fontWeight: 700, // Increased from 600
           fontSize: '1.1rem', // Increased font size
           textShadow: '0px 1px 2px rgba(74, 103, 65, 0.15)', // Light green shadow
@@ -150,7 +150,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '&.MuiTypography-h6': {
-            color: '#8B4513', // Mahogany color for menu text
+            color: '#2E7D32', // Green color for menu text
             fontWeight: 700, // Increased from 600
             fontSize: '1.25rem', // Increased font size
             textShadow: '0px 1px 2px rgba(74, 103, 65, 0.15)', // Light green shadow
@@ -162,7 +162,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '&.MuiMenu-paper': {
-            border: '2px solid #8B4513',
+            border: '2px solid #2E7D32',
             borderRadius: '8px',
             boxShadow: '0px 4px 12px rgba(139, 69, 19, 0.2)',
             '& .MuiList-root': {

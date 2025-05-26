@@ -183,10 +183,10 @@ const Home = () => {
               size="large"
               sx={{
                 bgcolor: 'white',
-                color: '#8B4513',
+                color: '#2E7D32',
                 '&:hover': { 
                   bgcolor: 'rgba(255, 255, 255, 0.9)',
-                  color: '#5C2E0C'
+                  color: '#1B5E20'
                 },
               }}
             >
@@ -223,11 +223,11 @@ const Home = () => {
                     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
                     borderRadius: '12px',
                     overflow: 'hidden',
-                    border: '1px solid #8B4513',
+                    border: '1px solid #2E7D32',
                     '&:hover': {
                       transform: 'translateY(-8px)',
                       boxShadow: '0px 8px 16px rgba(74, 103, 65, 0.15)',
-                      border: '1px solid #5C2E0C',
+                      border: '1px solid #1B5E20',
                     },
                   }}
                 >
@@ -316,10 +316,10 @@ const Home = () => {
                 size="large"
                 sx={{
                   bgcolor: 'white',
-                  color: '#8B4513',
+                  color: '#2E7D32',
                   '&:hover': { 
                     bgcolor: 'rgba(255, 255, 255, 0.9)',
-                    color: '#5C2E0C'
+                    color: '#1B5E20'
                   },
                 }}
               >

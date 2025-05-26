@@ -239,12 +239,12 @@ const Contact = () => {
                       sx={{
                         mt: 2,
                         bgcolor: 'white',
-                        color: '#8B4513',
-                        border: '2px solid #8B4513',
+                        color: '#2E7D32',
+                        border: '2px solid #2E7D32',
                         '&:hover': {
-                          bgcolor: '#5C2E0C',
+                          bgcolor: '#1B5E20',
                           color: 'white',
-                          border: '2px solid #8B4513',
+                          border: '2px solid #2E7D32',
                         },
                       }}
                     >

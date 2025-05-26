@@ -27,11 +27,15 @@ const StyledCard = styled(Card)(({ theme }) => ({
   flexDirection: 'column',
   position: 'relative',
   transition: 'transform 0.2s, box-shadow 0.2s',
-  border: '1px solid #8B4513',
+  backgroundColor: 'white',
+  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+  borderRadius: '12px',
+  overflow: 'hidden',
+  border: '1px solid #2E7D32',
   '&:hover': {
     transform: 'translateY(-8px)',
-    boxShadow: theme.shadows[8],
-    border: '1px solid #5C2E0C',
+    boxShadow: '0px 8px 16px rgba(74, 103, 65, 0.15)',
+    border: '1px solid #1B5E20',
   },
 }));
 
@@ -277,20 +281,20 @@ const Products = () => {
             sx={{
               backgroundColor: 'rgba(74, 103, 65, 0.05)',
               '& .MuiTabs-indicator': {
-                backgroundColor: '#8B4513',
+                backgroundColor: '#2E7D32',
                 height: '3px',
               },
               '& .MuiTabs-flexContainer': {
                 justifyContent: 'flex-start',
               },
               '& .MuiTab-root': {
-                color: '#8B4513',
+                color: '#2E7D32',
                 fontWeight: 600,
                 fontSize: '1.1rem',
                 textTransform: 'none',
                 minWidth: 200,
                 '&.Mui-selected': {
-                  color: '#5C2E0C',
+                  color: '#1B5E20',
                   fontWeight: 700,
                   backgroundColor: 'rgba(74, 103, 65, 0.15)',
                 },
@@ -399,17 +403,17 @@ const Products = () => {
                           variant="outlined"
                           fullWidth
                           sx={{
-                            borderColor: '#8B4513',
-                            color: '#8B4513',
+                            borderColor: '#2E7D32',
+                            color: '#2E7D32',
                             fontWeight: 600,
                             py: 1.5,
                             fontSize: '1rem',
                             fontFamily: '"Roboto", sans-serif',
                             textTransform: 'none',
                             '&:hover': {
-                              borderColor: '#5C2E0C',
-                              backgroundColor: 'rgba(139, 69, 19, 0.1)',
-                              color: '#5C2E0C'
+                              borderColor: '#1B5E20',
+                              backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                              color: '#1B5E20'
                             },
                           }}
                         >

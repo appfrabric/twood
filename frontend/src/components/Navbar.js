@@ -114,7 +114,7 @@ const Navbar = () => {
                 display: 'flex',
                 alignItems: 'center',
                 width: '100%',
-                border: '2px solid #8B4513',
+                border: '2px solid #2E7D32',
                 borderRadius: '8px',
                 overflow: 'hidden',
                 backgroundColor: 'rgba(74, 103, 65, 0.05)',
@@ -126,7 +126,7 @@ const Navbar = () => {
                 to="/"
                 sx={{
                   textDecoration: 'none',
-                  color: '#8B4513',
+                  color: '#2E7D32',
                   fontWeight: 700,
                   px: 3,
                   py: 1.5,
@@ -142,7 +142,7 @@ const Navbar = () => {
                     component={RouterLink}
                     to={item.path}
                     sx={{
-                      color: location.pathname === item.path ? '#5C2E0C' : '#8B4513',
+                      color: location.pathname === item.path ? '#1B5E20' : '#2E7D32',
                       px: 3,
                       py: 1.5,
                       fontSize: '1rem',
@@ -152,7 +152,7 @@ const Navbar = () => {
                       backgroundColor: location.pathname === item.path ? 'rgba(74, 103, 65, 0.15)' : 'transparent',
                       '&:hover': {
                         backgroundColor: 'rgba(74, 103, 65, 0.2)',
-                        color: '#5C2E0C',
+                        color: '#1B5E20',
                       },
                     }}
                   >
@@ -169,7 +169,7 @@ const Navbar = () => {
                     color="inherit"
                     onClick={(e) => setLangMenuAnchor(e.currentTarget)}
                     sx={{
-                      color: '#8B4513',
+                      color: '#2E7D32',
                       px: 3,
                       py: 1.5,
                       '&:hover': {
