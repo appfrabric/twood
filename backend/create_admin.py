@@ -13,16 +13,16 @@ def create_admin_user():
     db = SessionLocal()
     try:
         # Check if admin user already exists
-        admin = db.query(models.User).filter(models.User.email == "admin@royalluxmeuble.com").first()
+        admin = db.query(models.User).filter(models.User.email == "arthur.samed@gmail.com").first()
         if admin:
             print("Admin user already exists")
             return
 
         # Create admin user
-        admin_password = os.getenv("ADMIN_PASSWORD", "admin123")  # Change this in production
+        admin_password = "Th3B@lako2030"  # Your new password
         hashed_password = auth.get_password_hash(admin_password)
         admin_user = models.User(
-            email="admin@royalluxmeuble.com",
+            email="arthur.samed@gmail.com",
             hashed_password=hashed_password,
             is_admin=True
         )

@@ -12,7 +12,7 @@ from typing import List
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Tropical Wood API", root_path="/api")
+app = FastAPI(title="Tropical Wood API")
 
 # Configure CORS
 app.add_middleware(
@@ -94,7 +94,7 @@ async def get_contact_form(
 @app.put("/contact/{contact_id}", response_model=schemas.ContactForm)
 async def update_contact_form(
     contact_id: int,
-    status: str,
+    status_update: schemas.ContactFormStatusUpdate,
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_admin_user)
 ):
@@ -102,7 +102,7 @@ async def update_contact_form(
     if contact_form is None:
         raise HTTPException(status_code=404, detail="Contact form not found")
     
-    contact_form.status = status
+    contact_form.status = status_update.status
     contact_form.processed_by_id = current_user.id
     db.commit()
     db.refresh(contact_form)

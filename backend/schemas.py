@@ -22,6 +22,9 @@ class ContactForm(ContactFormBase):
     class Config:
         from_attributes = True
 
+class ContactFormStatusUpdate(BaseModel):
+    status: str
+
 class UserBase(BaseModel):
     email: EmailStr
 
