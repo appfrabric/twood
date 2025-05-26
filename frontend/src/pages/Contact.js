@@ -74,20 +74,20 @@ const Contact = () => {
     {
       icon: <EmailIcon sx={{ fontSize: 40 }} />,
       title: 'Email',
-      content: 'info@tropicalwood.com',
-      link: 'mailto:info@tropicalwood.com',
+      content: 'sales@royalluxmeuble.com',
+      link: 'mailto:sales@royalluxmeuble.com',
     },
     {
       icon: <PhoneIcon sx={{ fontSize: 40 }} />,
       title: 'Phone',
-      content: '+237 123 456 789',
-      link: 'tel:+237123456789',
+      content: '+237 6 91 81 41 68',
+      link: 'tel:+237691814168',
     },
     {
       icon: <WhatsAppIcon sx={{ fontSize: 40 }} />,
       title: 'WhatsApp',
-      content: '+237 123 456 789',
-      link: 'https://wa.me/237123456789',
+      content: '+237 6 99 80 19 59',
+      link: 'https://wa.me/237699801959',
     },
     {
       icon: <LocationOnIcon sx={{ fontSize: 40 }} />,
