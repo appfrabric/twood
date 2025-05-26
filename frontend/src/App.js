@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { I18nextProvider } from 'react-i18next';
-import theme from './theme';
 import i18n from './i18n';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -13,7 +12,44 @@ import Products from './pages/Products';
 import Visit from './pages/Visit';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
-import { Box } from '@mui/material';
+import AdminLogin from './pages/AdminLogin';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2E7D32', // Green
+    },
+    secondary: {
+      main: '#1B5E20', // Dark Green
+    },
+    background: {
+      default: '#F5F5F5',
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontWeight: 700,
+    },
+    h2: {
+      fontWeight: 600,
+    },
+    h3: {
+      fontWeight: 600,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          textTransform: 'none',
+          fontWeight: 600,
+        },
+      },
+    },
+  },
+});
 
 const App = () => {
   return (
@@ -21,26 +57,17 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '100vh',
-            }}
-          >
-            <Navbar />
-            <Box sx={{ flexGrow: 1 }}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/visit" element={<Visit />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/admin" element={<Admin />} />
-              </Routes>
-            </Box>
-            <Footer />
-          </Box>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/visit" element={<Visit />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+          </Routes>
+          <Footer />
         </Router>
       </ThemeProvider>
     </I18nextProvider>

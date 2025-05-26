@@ -24,11 +24,13 @@ import {
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const MotionBox = motion(Box);
 
 const Admin = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [contactForms, setContactForms] = useState([]);
   const [selectedForm, setSelectedForm] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
@@ -37,10 +39,12 @@ const Admin = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
-    if (token) {
-      fetchContactForms();
+    if (!token) {
+      navigate('/admin/login');
+      return;
     }
-  }, [token]);
+    fetchContactForms();
+  }, [token, navigate]);
 
   const fetchContactForms = async () => {
     try {
@@ -49,6 +53,12 @@ const Admin = () => {
           'Authorization': `Bearer ${token}`
         }
       });
+      if (response.status === 401) {
+        localStorage.removeItem('token');
+        setToken(null);
+        navigate('/admin/login');
+        return;
+      }
       if (!response.ok) {
         throw new Error('Failed to fetch contact forms');
       }
@@ -69,6 +79,12 @@ const Admin = () => {
         },
         body: JSON.stringify({ status })
       });
+      if (response.status === 401) {
+        localStorage.removeItem('token');
+        setToken(null);
+        navigate('/admin/login');
+        return;
+      }
       if (!response.ok) {
         throw new Error('Failed to update status');
       }
@@ -93,6 +109,7 @@ const Admin = () => {
       const data = await response.json();
       localStorage.setItem('token', data.access_token);
       setToken(data.access_token);
+      navigate('/admin');
     } catch (error) {
       setError(error.message);
     }
@@ -178,6 +195,16 @@ const Admin = () => {
                       setStatus(form.status);
                       setOpenDialog(true);
                     }}
+                    sx={{
+                      bgcolor: 'white',
+                      color: '#2E7D32',
+                      border: '2px solid #2E7D32',
+                      '&:hover': {
+                        bgcolor: '#1B5E20',
+                        color: 'white',
+                        border: '2px solid #2E7D32',
+                      },
+                    }}
                   >
                     Update Status
                   </Button>
@@ -206,7 +233,20 @@ const Admin = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setOpenDialog(false)}>Cancel</Button>
-          <Button onClick={handleStatusChange} variant="contained">
+          <Button 
+            onClick={handleStatusChange} 
+            variant="contained"
+            sx={{
+              bgcolor: 'white',
+              color: '#2E7D32',
+              border: '2px solid #2E7D32',
+              '&:hover': {
+                bgcolor: '#1B5E20',
+                color: 'white',
+                border: '2px solid #2E7D32',
+              },
+            }}
+          >
             Update
           </Button>
         </DialogActions>
