@@ -1,0 +1,46 @@
+name: roilux
+services:
+- name: frontend
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: appfrabric/twood
+  build_command: cd frontend && npm install && npm run build
+  run_command: cd frontend && npm start
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
+  envs:
+  - key: REACT_APP_API_URL
+    value: ${backend.URL}
+    type: SECRET
+
+- name: backend
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: appfrabric/twood
+  build_command: cd backend && pip install -r requirements.txt
+  run_command: cd backend && python app.py
+  http_port: 5000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /api
+  envs:
+  - key: DATABASE_URL
+    value: ${db.DATABASE_URL}
+    type: SECRET
+  - key: SECRET_KEY
+    value: ${db.SECRET_KEY}
+    type: SECRET
+
+databases:
+- engine: PG
+  name: db
+  production: false
+  cluster_name: roilux-db
+  db_name: roilux
+  db_user: roilux 
