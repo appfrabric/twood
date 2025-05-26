@@ -113,6 +113,12 @@ const Products = () => {
             'images/products/melamine/standard/gallery/2.jpg',
             'images/products/melamine/standard/gallery/3.jpg',
             'images/products/melamine/standard/gallery/4.jpg',
+            'images/products/melamine/standard/gallery/5.jpg',
+            'images/products/melamine/standard/gallery/6.jpg',
+            'images/products/melamine/standard/gallery/7.jpg',
+            'images/products/melamine/standard/gallery/8.jpg',
+            'images/products/melamine/standard/gallery/9.jpg',
+            'images/products/melamine/standard/gallery/10.jpg'
           ],
         },
         {
