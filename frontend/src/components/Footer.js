@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   Box,
   Container,
@@ -9,8 +8,6 @@ import {
 } from '@mui/material';
 
 const Footer = () => {
-  const { t } = useTranslation();
-
   return (
     <Box
       component="footer"
@@ -28,15 +25,15 @@ const Footer = () => {
               Tropical Wood Inc.
             </Typography>
             <Typography variant="body2" paragraph>
-              {t('footer.division')}
+              A division of Roi Lux
             </Typography>
             <Typography variant="body2">
-              {t('footer.partner')}
+              Your trusted partner in premium wood products from Cameroon
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom>
-              {t('nav.products')}
+              Products
             </Typography>
             <Typography variant="body2" paragraph>
               • Plywood
@@ -53,7 +50,7 @@ const Footer = () => {
           </Grid>
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom>
-              {t('nav.contact')}
+              Contact
             </Typography>
             <Typography variant="body2" paragraph>
               Douala, Cameroon
