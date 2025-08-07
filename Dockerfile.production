@@ -9,7 +9,9 @@ RUN apt-get update && \
     postgresql postgresql-contrib \
     postgresql-server-dev-14 \
     libpq-dev \
-    nginx supervisor curl git build-essential && \
+    nginx supervisor curl git build-essential \
+    gcc g++ make cmake \
+    libssl-dev libffi-dev python3-dev && \
     ln -sf /usr/bin/python3 /usr/bin/python && \
     npm install -g serve && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
