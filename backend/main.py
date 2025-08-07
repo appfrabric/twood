@@ -8,13 +8,49 @@ import schemas
 import auth
 from database import engine, get_db
 from typing import List
+import time
+import psycopg2
+from sqlalchemy import create_engine
+
+def wait_for_database():
+    """Wait for the database to be ready"""
+    max_attempts = 30
+    attempt = 0
+    
+    while attempt < max_attempts:
+        try:
+            # Try to connect to the database
+            conn = psycopg2.connect(
+                host="db",
+                port=5432,
+                database="roilux",
+                user="postgres",
+                password="postgres"
+            )
+            conn.close()
+            print("Database is ready!")
+            return True
+        except psycopg2.OperationalError as e:
+            print(f"Database not ready yet (attempt {attempt + 1}/{max_attempts}): {e}")
+            attempt += 1
+            time.sleep(2)
+    
+    raise Exception("Database failed to start within the expected time")
+
+# Wait for database to be ready
+print("Waiting for database to be ready...")
+wait_for_database()
 
 # Create database tables
+print("Creating database tables...")
 models.Base.metadata.create_all(bind=engine)
+print("Database tables created successfully!")
 
+print("Initializing FastAPI application...")
 app = FastAPI(title="Tropical Wood API")
 
 # Configure CORS
+print("Configuring CORS...")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # In production, replace with your frontend domain
@@ -22,6 +58,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+print("CORS configured successfully!")
 
 # Authentication endpoints
 @app.post("/token", response_model=schemas.Token)
@@ -131,4 +168,9 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy"} 
+    return {"status": "healthy"}
+
+if __name__ == "__main__":
+    import uvicorn
+    print("Starting uvicorn server...")
+    uvicorn.run(app, host="0.0.0.0", port=8000) 
