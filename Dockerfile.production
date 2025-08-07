@@ -15,21 +15,22 @@ RUN apt-get update && \
 # Set up working directory
 WORKDIR /app
 
+# Copy all files first to ensure they exist
+COPY . /app/
+
 # --- FRONTEND ---
-COPY frontend/package*.json ./frontend/
-RUN cd frontend && npm ci --only=production
-COPY frontend ./frontend
-RUN cd frontend && npm run build && \
+WORKDIR /app/frontend
+RUN npm ci --only=production
+RUN npm run build && \
     mkdir -p /usr/share/nginx/html && \
     cp -r build/* /usr/share/nginx/html/ && \
     chown -R root:root /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html
 
 # --- BACKEND ---
-COPY backend/requirements.txt ./backend/
+WORKDIR /app/backend
 RUN python3 -m venv /app/venv && \
-    /app/venv/bin/pip install --no-cache-dir -r backend/requirements.txt
-COPY backend ./backend
+    /app/venv/bin/pip install --no-cache-dir -r requirements.txt
 
 # --- NGINX ---
 RUN rm -f /etc/nginx/sites-enabled/default && \
@@ -39,7 +40,6 @@ RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # --- SUPERVISOR CONFIG ---
 RUN mkdir -p /var/log/supervisor
-COPY --chown=root:root . /app/
 
 # Create supervisor config
 RUN echo "[supervisord]\nnodaemon=true\nuser=root\n" > /etc/supervisor/conf.d/supervisord.conf && \
