@@ -20,7 +20,7 @@ COPY . /app/
 
 # --- FRONTEND ---
 WORKDIR /app/frontend
-RUN npm ci --only=production
+RUN npm install
 RUN npm run build && \
     mkdir -p /usr/share/nginx/html && \
     cp -r build/* /usr/share/nginx/html/ && \
