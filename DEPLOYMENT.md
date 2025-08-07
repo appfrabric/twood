@@ -23,8 +23,10 @@ This guide will help you deploy the Roilux Tropical Wood application to Digital 
 1. **App Name**: `roilux-tropical-wood`
 2. **Region**: Choose the closest region to your users (e.g., NYC1)
 3. **Source Directory**: `/` (root)
-4. **Dockerfile Path**: `Dockerfile.production`
-5. **HTTP Port**: `80`
+4. **Build Command**: Leave empty (Docker will handle this)
+5. **Run Command**: Leave empty (Docker will handle this)
+6. **Dockerfile Path**: `Dockerfile.production` ⭐ **Important: Set this to `Dockerfile.production`**
+7. **HTTP Port**: `80`
 
 ### Step 3: Set Environment Variables
 
