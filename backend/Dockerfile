@@ -24,4 +24,4 @@ RUN mkdir -p static templates
 EXPOSE 8000
 
 # Start the application
-CMD ["python", "app.py"] 
+CMD ["python", "main.py"] 

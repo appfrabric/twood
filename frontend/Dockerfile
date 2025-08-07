@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm install
 
 # Copy source code
 COPY . .
@@ -24,8 +24,8 @@ COPY --from=build /app/build /usr/share/nginx/html
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy images
-COPY public/images /usr/share/nginx/html/images
+# Create images directory
+RUN mkdir -p /usr/share/nginx/html/images
 
 # Expose port 80
 EXPOSE 80
