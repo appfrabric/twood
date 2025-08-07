@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11.7-slim
 
 WORKDIR /app
 
@@ -6,7 +6,6 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
-    netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements file
@@ -21,9 +20,8 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p static templates
 
-# Create a script to wait for the database and initialize it
-RUN echo '#!/bin/bash\necho "Waiting for database..."\nwhile ! nc -z db 5432; do\n  sleep 0.1\ndone\necho "Database is up!"\npython create_admin.py\nuvicorn main:app --host 0.0.0.0 --port 8000\n' > /app/start.sh
+# Expose port
+EXPOSE 8000
 
-RUN chmod +x /app/start.sh
-
-CMD ["/app/start.sh"] 
+# Start the application
+CMD ["python", "app.py"] 

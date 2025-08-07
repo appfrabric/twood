@@ -13,6 +13,7 @@ services:
       - REACT_APP_API_URL=/api
     networks:
       - app-network
+    restart: unless-stopped
 
   backend:
     build:
@@ -33,9 +34,10 @@ services:
       - db
     networks:
       - app-network
+    restart: unless-stopped
 
   db:
-    image: postgres:latest
+    image: postgres:15.5
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -46,6 +48,7 @@ services:
       - "5433:5432"
     networks:
       - app-network
+    restart: unless-stopped
 
 networks:
   app-network:
