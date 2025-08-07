@@ -1,0 +1,51 @@
+name: Deploy to Digital Ocean
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        
+    - name: Deploy to Digital Ocean App Platform
+      run: |
+        # Check if app exists
+        if doctl apps list --format ID,Name | grep -q "roilux-tropical-wood"; then
+          echo "Updating existing app..."
+          APP_ID=$(doctl apps list --format ID,Name | grep "roilux-tropical-wood" | awk '{print $1}')
+          doctl apps update $APP_ID --spec .do/app.yaml
+        else
+          echo "Creating new app..."
+          doctl apps create --spec .do/app.yaml
+        fi
+        
+    - name: Get app URL
+      id: app-url
+      run: |
+        APP_ID=$(doctl apps list --format ID,Name | grep "roilux-tropical-wood" | awk '{print $1}')
+        APP_URL=$(doctl apps get $APP_ID --format URL --no-header)
+        echo "url=$APP_URL" >> $GITHUB_OUTPUT
+        
+    - name: Comment on PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `🚀 Deployment completed! Your app is available at: ${{ steps.app-url.outputs.url }}`
+          }) 

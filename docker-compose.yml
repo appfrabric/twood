@@ -18,6 +18,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    env_file:
+      - .env
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -26,6 +28,7 @@ services:
       - POSTGRES_PORT=5432
       - SECRET_KEY=your-secret-key-here
       - ADMIN_PASSWORD=admin123
+      - ADMIN_EMAIL=admin@example.com
     depends_on:
       - db
     networks:
@@ -40,7 +43,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
     networks:
       - app-network
 

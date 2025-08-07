@@ -29,13 +29,30 @@ async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
+    print("=== Login Request Details ===")
+    print(f"Username: {form_data.username}")
+    print(f"Grant Type: {form_data.grant_type}")
+    print(f"Scope: {form_data.scopes}")
+    print(f"Client ID: {form_data.client_id}")
+    print(f"Client Secret: {form_data.client_secret}")
+    print("===========================")
+
     user = db.query(models.User).filter(models.User.email == form_data.username).first()
-    if not user or not auth.verify_password(form_data.password, user.hashed_password):
+    if not user:
+        print(f"User not found: {form_data.username}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
+    if not auth.verify_password(form_data.password, user.hashed_password):
+        print(f"Invalid password for user: {form_data.username}")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    print(f"Login successful for user: {form_data.username}")
     access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = auth.create_access_token(
         data={"sub": user.email}, expires_delta=access_token_expires
@@ -64,7 +81,7 @@ async def create_contact_form(
     contact_form: schemas.ContactFormCreate,
     db: Session = Depends(get_db)
 ):
-    db_contact_form = models.ContactForm(**contact_form.dict())
+    db_contact_form = models.ContactForm(**contact_form.model_dump())
     db.add(db_contact_form)
     db.commit()
     db.refresh(db_contact_form)

@@ -1,0 +1,126 @@
+# Use Ubuntu as the base image for compatibility
+FROM ubuntu:22.04
+
+# Install system dependencies
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    python3 python3-pip python3-venv \
+    nodejs npm \
+    postgresql postgresql-contrib \
+    nginx supervisor curl git build-essential libpq-dev && \
+    ln -sf /usr/bin/python3 /usr/bin/python && \
+    npm install -g serve && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set up working directory
+WORKDIR /app
+
+# --- FRONTEND ---
+COPY frontend/package*.json ./frontend/
+RUN cd frontend && npm install
+COPY frontend ./frontend
+RUN cd frontend && npm run build && \
+    mkdir -p /usr/share/nginx/html && \
+    cp -r build/* /usr/share/nginx/html/ && \
+    chown -R root:root /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
+
+# --- BACKEND ---
+COPY backend/requirements.txt ./backend/
+RUN python3 -m venv /app/venv && \
+    /app/venv/bin/pip install --no-cache-dir -r backend/requirements.txt
+COPY backend ./backend
+
+# --- NGINX ---
+RUN rm -f /etc/nginx/sites-enabled/default && \
+    rm -f /etc/nginx/sites-available/default
+COPY frontend/nginx.conf /etc/nginx/sites-available/default
+RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# --- SUPERVISOR CONFIG ---
+RUN mkdir -p /var/log/supervisor
+COPY --chown=root:root . /app/
+
+# Create supervisor config
+RUN echo "[supervisord]\nnodaemon=true\nuser=root\n" > /etc/supervisor/conf.d/supervisord.conf && \
+    echo "[program:backend]\ncommand=/app/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --reload\ndirectory=/app/backend\nautostart=true\nautorestart=true\npriority=1\nstdout_logfile=/var/log/supervisor/backend.log\nstderr_logfile=/var/log/supervisor/backend.error.log\nenvironment=PYTHONUNBUFFERED=1\n" >> /etc/supervisor/conf.d/supervisord.conf && \
+    echo "[program:nginx]\ncommand=nginx -g 'daemon off;'\nautostart=true\nautorestart=true\npriority=2\nstdout_logfile=/var/log/supervisor/nginx.log\nstderr_logfile=/var/log/supervisor/nginx.error.log\n" >> /etc/supervisor/conf.d/supervisord.conf
+
+# --- POSTGRES INIT ---
+RUN mkdir -p /var/lib/postgresql/data && \
+    chown -R postgres:postgres /var/lib/postgresql && \
+    chmod 700 /var/lib/postgresql/data
+
+USER postgres
+RUN /usr/lib/postgresql/14/bin/initdb -D /var/lib/postgresql/data && \
+    echo "host all all 0.0.0.0/0 md5" >> /var/lib/postgresql/data/pg_hba.conf && \
+    echo "listen_addresses='*'" >> /var/lib/postgresql/data/postgresql.conf
+
+USER root
+
+# Create entrypoint script
+RUN cat <<'EOF' > /app/entrypoint.sh
+#!/bin/bash
+set -e
+
+# Check if .env file exists and is readable
+if [ ! -f /app/.env ]; then
+    echo "ERROR: .env file not found at /app/.env"
+    exit 1
+fi
+
+# Load environment variables from .env file
+echo "Loading environment variables from .env file"
+export $(grep -v '^#' /app/.env | grep -v '^$' | xargs)
+
+# Verify required environment variables
+required_vars=("POSTGRES_USER" "POSTGRES_PASSWORD" "POSTGRES_DB" "SECRET_KEY" "ADMIN_EMAIL" "ADMIN_PASSWORD")
+for var in "${required_vars[@]}"; do
+    if [ -z "${!var}" ]; then
+        echo "ERROR: Required environment variable $var is not set"
+        exit 1
+    fi
+done
+
+echo "Environment variables loaded successfully"
+echo "POSTGRES_USER: $POSTGRES_USER"
+echo "POSTGRES_DB: $POSTGRES_DB"
+echo "SECRET_KEY: ${SECRET_KEY:0:4}...${SECRET_KEY: -4}"
+
+# Ensure proper permissions for PostgreSQL data directory
+chown -R postgres:postgres /var/lib/postgresql
+chmod 700 /var/lib/postgresql/data
+
+# Start PostgreSQL
+su - postgres -c "/usr/lib/postgresql/14/bin/pg_ctl -D /var/lib/postgresql/data start"
+
+# Wait for PostgreSQL to be ready
+echo "Waiting for PostgreSQL to start..."
+until su - postgres -c "pg_isready -h localhost -p 5432"; do
+    sleep 1
+done
+echo "PostgreSQL is ready"
+
+# Create user and database with proper permissions
+su - postgres -c "psql -c \"CREATE USER $POSTGRES_USER WITH PASSWORD '$POSTGRES_PASSWORD' CREATEDB;\" || true"
+su - postgres -c "createdb -O $POSTGRES_USER $POSTGRES_DB || true"
+su - postgres -c "psql -d $POSTGRES_DB -c \"GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_DB TO $POSTGRES_USER;\""
+
+# Start the backend
+cd /app/backend
+source /app/venv/bin/activate
+
+# Create admin user
+python3 create_admin.py
+
+# Verify admin user creation
+echo "Verifying admin user creation..."
+su - postgres -c "psql -d $POSTGRES_DB -c \"SELECT email, is_admin FROM users;\""
+
+# Start supervisor
+exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+EOF
+RUN chmod +x /app/entrypoint.sh
+
+EXPOSE 80 5432
+CMD ["/app/entrypoint.sh"] 
